@@ -1,0 +1,14 @@
+-------Notes-------
+I did not push the config file up to github, however this is what I had in the config file. Most of it should be self explanatory.
+The folder path is the actual path inside your local computer, since it changes I thought it could just be a config variable
+
+export default{
+    db: {
+        uri: 'mongodb+srv://heavenlywriting:<password>@cluster0-u13yq.mongodb.net/test?retryWrites=true&w=majority', //place the URI of your mongo database here.
+    },
+    folderPath: 'SoftwareEngProject/DakotaFanClub',
+    port: 5000
+};
+
+-------Problems-------
+Every time I reload the page there is a uri error on decoding the favicon.ico and manifest.json. It does not affect how the page is loaded, but might be a problem in the future
