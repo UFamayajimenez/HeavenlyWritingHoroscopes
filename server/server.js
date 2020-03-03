@@ -27,10 +27,10 @@ app.use(bodyParser.urlencoded({
 //serve static files as needed
 app.use('/', express.static('./../../client'));
 
-/* Request handler for all other routes - default for now 
+/* Request handler for all other routes - default for now
    Sends a response (res) to go to the homepage for all routes not specified */
-app.all('/*', (req,res) => {
-    res.sendFile(path.resolve(config.folderPath,'./../../client/public/index.html'));
-});
+// app.all('/*', (req,res) => {
+//     res.sendFile(path.resolve(config.folderPath,'./../../../client/public/index.html'));
+// });
 
 app.listen(config.port, () => console.log(`Server now running on port ${config.port}!`));
