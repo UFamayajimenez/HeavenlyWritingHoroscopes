@@ -3,8 +3,6 @@ import UserSchema from '../models/UserSchema.js';
 
 const create = async (req, res) => {
     console.log('post request received');
-    console.log(req.body);
-    res.send('Success');
 
 
     // TODO: hash encryption on user data
