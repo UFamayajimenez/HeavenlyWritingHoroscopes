@@ -33,16 +33,11 @@ app.use(cors());
 app.use('/', express.static('./../../client'));
 
 app.post('/SignUp', newUserController);
-//     (req, res) => {
-//     console.log('post request received');
-//     console.log(req.body);
-//     res.send('Success');
-// });
 
 /* Request handler for all other routes - default for now
    Sends a response (res) to go to the homepage for all routes not specified */
 app.all('/*', (req,res) => {
-    res.sendFile(path.resolve('./client/public/index.html')); //'./../../../../client/public/index.html'
+    res.sendFile(path.resolve('./client/public/index.html'));
 });
 
 app.listen(config.port, () => console.log(`Server now running on port ${config.port}!`));

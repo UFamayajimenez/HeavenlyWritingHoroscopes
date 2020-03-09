@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
-import {ToastContainer, toast} from 'react-toastify';
 
 const SignUp = () => {
 
@@ -15,15 +14,14 @@ const SignUp = () => {
         password: ''
     };
 
-    // This doesn't work properly but maybe it should?
     const handleSubmit = () => {
         axios.post("http://localhost:5000/SignUp", data)
             .then(res => {
                 console.log('post request sent');
-                toast.success("Successful");
+                console.log(res);
         })
             .catch(err => {
-                toast.error('Error');
+                console.log(err);
             })
     };
 
