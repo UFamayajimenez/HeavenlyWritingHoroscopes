@@ -9,17 +9,22 @@ import { useForm } from 'react-hook-form'; //having a lot of trouble getting rea
 const App = (props) => {
     return (
         <div>
-            <NavBar />
-            <Switch>
-                <Route exact path="/Home" component={Home} />
-                <Route exact path="/SignUp" component={SignUp} />
-
-                <Route exact path="/">
-                    <Redirect to="/Home" />
-                </Route>
-                <Route component={NotFound}/>
-            </Switch>
+            <div
+                style={{
+                    background: '#001428'
+                }}
+            >
+                <NavBar />
+                <Switch>
+                    <Route exact path="/Home" component={Home} />
+                    <Route exact path="/SignUp" component={SignUp} />
+                    <Route exact path="/">
+                        <Redirect to="/Home" />
+                    </Route>
+                    <Route component={NotFound}/>
+                </Switch>
+            </div>
         </div>
     );
-}
+};
 export default App;

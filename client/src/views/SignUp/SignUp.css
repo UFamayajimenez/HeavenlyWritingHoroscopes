@@ -1,27 +1,68 @@
-body {
-    margin: 0;
-}
 
-.App {
+
+.bg{
     text-align: center;
-    background: #282c34;
+    background: #001428;
+
+    color: #FFFFFF;
+
+    margin-top: 100px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+    padding-bottom: 300px;
 }
 
-.App-logo {
-    height: 40vmin;
+.row1{
+    padding-top: 30px;
+    padding-bottom: 20px;
 }
 
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.row2{
+    padding-bottom: 20px;
 }
 
-.App-link {
-    color: #09d3ac;
+.row3{
+    padding-bottom: 20px;
+}
+
+.row4{
+    padding-bottom: 20px;
+}
+
+.submitButton{
+    padding-top: 20px;
+}
+
+
+
+
+input[type="text"], textarea {
+
+    background-color : #d1d1d1;
+
+}
+
+input[type="tel"], textarea {
+
+    background-color : #d1d1d1;
+
+}
+
+input[type="email"], textarea {
+
+    background-color : #d1d1d1;
+
+}
+
+input[type="time"], textarea {
+
+    background-color : #d1d1d1;
+
+}
+
+input[type="date"], textarea {
+
+    background-color : #d1d1d1;
+
 }
