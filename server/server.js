@@ -27,6 +27,12 @@ app.use(bodyParser.urlencoded({
 //serve static files as needed
 app.use('/', express.static('./../../client'));
 
+// app.post('/SignUp', (req, res) => {
+//     console.log('post request received');
+//     console.log(req.body.name);
+//     res.send('Success');
+// });
+
 /* Request handler for all other routes - default for now
    Sends a response (res) to go to the homepage for all routes not specified */
 app.all('/*', (req,res) => {

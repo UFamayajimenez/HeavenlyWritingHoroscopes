@@ -9,3 +9,5 @@ export default{
 };
 
 Replace <password> with the password to MongoDB admin account heavenlywriting.
+Start server from root directory with:
+    nodemon run-script server\server.js

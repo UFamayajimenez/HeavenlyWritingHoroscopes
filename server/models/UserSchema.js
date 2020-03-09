@@ -3,9 +3,11 @@ import mongoose from 'mongoose';
 const userSchema = new mongoose.Schema({
     natalSign: {type: String, required: true},
     name: {type: String, required: true},
-    DOB: {month:{type : mongoose.Number}, day:{type : mongoose.Number}, year:{type : mongoose.Number}, required: true},
-    time: {hour:{type : mongoose.Number}, minute:{type : mongoose.Number}},
+    DOB: {month:{type : String}, day:{type : String}, year:{type : String}, required: true},
+    location: {type: String},
+    time: {hour:{type : String}, minute:{type : String}},
     email: {type: String, required: true},
+    number: {type: String},
     password: {type: String, required: true}
     //Check out - https://mongoosejs.com/docs/guide.html
 });
