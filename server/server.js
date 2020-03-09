@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import config from './config/config.js';
+import cors from 'cors';
 
 
 // Use env port or default --const port = process.env.PORT || 5000;
@@ -24,14 +25,18 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use(bodyParser.json());
+
+app.use(cors());
+
 //serve static files as needed
 app.use('/', express.static('./../../client'));
 
-// app.post('/SignUp', (req, res) => {
-//     console.log('post request received');
-//     console.log(req.body.name);
-//     res.send('Success');
-// });
+app.post('/SignUp', (req, res) => {
+    console.log('post request received');
+    console.log(req.body);
+    res.send('Success');
+});
 
 /* Request handler for all other routes - default for now
    Sends a response (res) to go to the homepage for all routes not specified */

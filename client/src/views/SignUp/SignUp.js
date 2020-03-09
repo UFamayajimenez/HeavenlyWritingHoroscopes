@@ -16,16 +16,16 @@ const SignUp = () => {
     };
 
     // This doesn't work properly but maybe it should?
-    // const handleSubmit = () => {
-    //     axios.post("http://localhost:5000/SignUp", data)
-    //         .then(res => {
-    //             console.log('post request sent');
-    //             toast.success("Successful");
-    //     })
-    //         .catch(err => {
-    //             toast.error('Error');
-    //         })
-    // };
+    const handleSubmit = () => {
+        axios.post("http://localhost:5000/SignUp", data)
+            .then(res => {
+                console.log('post request sent');
+                toast.success("Successful");
+        })
+            .catch(err => {
+                toast.error('Error');
+            })
+    };
 
     return (
         <form>
@@ -100,9 +100,7 @@ const SignUp = () => {
             </div>
             <button type="button" className="btn btn-outline-primary" onClick={handleSubmit}>Primary</button>
         </form>
-
     );
-
 };
 
 export default SignUp;
