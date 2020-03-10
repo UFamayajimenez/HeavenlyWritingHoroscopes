@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './SignUp.css';
 
 const SignUp = () => {
 
@@ -26,20 +27,25 @@ const SignUp = () => {
     };
 
     return (
-        <form>
-            <div className="form-row">
-                <div className="col">
-                    <input type="text" className="form-control" placeholder="First name"
+        <div className="bg">
+            <h1>Heavenly Writing Subscription Form</h1>
+            <form>
+                <div className="row1">
+                    <div className="form-row">
+                    <div className="col">
+                        <input type="text" className="form-control" placeholder="First name"
                            onChange={e => data.name.first = e.target.value + ' '}
                     />
-                </div>
-                <div className="col">
-                    <input type="text" className="form-control" placeholder="Last name"
+                    </div>
+                    <div className="col">
+                        <input type="text" className="form-control" placeholder="Last name"
                            onChange={e => data.name.last = e.target.value}
                     />
-                </div>
-            </div>
-            <div className="form-row">
+                    </div>
+                    </div>
+      </div>
+                <div className="row2">
+                <div className="form-row">
                 <div className="col">
                     <label htmlFor="dateOfBirth-input">Date of Birth</label>
                     <input className="form-control" type="date" id="dateOfBirth-input"
@@ -52,13 +58,6 @@ const SignUp = () => {
                     />
                 </div>
                 <div className="col">
-                    <input type="text" className="form-control" placeholder="Location of Birth"
-                           onChange={e => data.location = e.target.value}
-                    />
-                </div>
-            </div>
-            <div className="form-row">
-                <div className="col">
                     <label htmlFor="timeOfBirth-label">Time of Birth</label>
                     <input className="form-control" type="time" id="timeOfBirth-input"
                            onChange={e => {
@@ -69,6 +68,18 @@ const SignUp = () => {
                     />
                 </div>
             </div>
+                </div>
+                <div className="row3">
+            <div className="form-row">
+                <div className="col">
+                    <label htmlFor="locationOfBirth-label">Location of Birth</label>
+                    <input type="text" className="form-control" placeholder="Location of Birth"
+                           onChange={e => data.location = e.target.value}
+                    />
+                </div>
+            </div>
+                </div>
+                <div className="row4">
             <div className="form-row">
                 <div className="col">
                     <input type="text" className="form-control" type = "email" placeholder="Email Address"
@@ -81,23 +92,29 @@ const SignUp = () => {
                     />
                 </div>
             </div>
+                    </div>
+                <div className="row5">
             <div className="form-row">
                 <div className="col">
+
                     <input type="text" className="form-control" placeholder="Username"/>
                 </div>
                 <div className="col">
                     <input type="text" className="form-control" placeholder="Password"
                            onChange={e => data.password = e.target.value}
                     />
+      
                 </div>
-            </div>
-            <div className="form-row">
                 <div className="col">
                     <input type="text" className="form-control" placeholder="Confirm Password"/>
                 </div>
             </div>
+                    </div>
+                <div className="submitButton">
             <button type="button" className="btn btn-outline-primary" onClick={handleSubmit}>Primary</button>
+                </div>
         </form>
+        </div>
     );
 };
 

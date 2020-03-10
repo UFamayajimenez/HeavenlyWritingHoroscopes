@@ -6,6 +6,10 @@
     padding: 1%;
 }
 
+body{
+    background: #282c34;
+}
+
 .nav-logo {
     display:flex;
     height: 50px;
@@ -25,7 +29,7 @@
 }
 
 .nav-link {
-    background-color: #09d3ac;
+    background-color: #483475;
     color: black;
     padding: 14px 25px;
     text-align: center;
@@ -33,6 +37,6 @@
 }
 
 .nav-link:hover {
-    background-color: #08bd9a;
+    background-color: #483475;
 }
 
