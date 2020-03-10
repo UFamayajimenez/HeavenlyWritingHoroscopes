@@ -37,6 +37,8 @@ module.exports.init = () => {
     // add a router
     // app.use('/api/example', exampleRouter);
 
+    app.post('/SignUp', newUserController);
+
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
         app.use(express.static(path.join(__dirname, '../../client/build')));
