@@ -16,7 +16,8 @@ const SignUp = () => {
     };
 
     const handleSubmit = () => {
-        axios.post("http://localhost:5000/SignUp", data)
+        const url = "http://localhost:" + process.env.PORT.toString() + "/SignUp";
+        axios.post(url, data)
             .then(res => {
                 console.log('post request sent');
                 console.log(res);
