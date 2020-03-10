@@ -5,7 +5,6 @@ import SignUp from "./views/SignUp/SignUp";
 import NotFound from "./views/NotFound";
 import NavBar from "./components/Header/NavBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useForm } from 'react-hook-form'; //having a lot of trouble getting react hook form to work (https://react-hook-form.com/)
 const App = (props) => {
     return (
         <div>

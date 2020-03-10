@@ -81,12 +81,12 @@ const SignUp = () => {
                 <div className="row4">
             <div className="form-row">
                 <div className="col">
-                    <input type="text" className="form-control" type = "email" placeholder="Email Address"
+                    <input className="form-control" type = "email" placeholder="Email Address"
                            onChange={e => data.email = e.target.value}
                     />
                 </div>
                 <div className="col">
-                    <input type="text" className="form-control" type = "tel" placeholder="Phone Number"
+                    <input className="form-control" type = "tel" placeholder="Phone Number"
                            onChange={e => data.number = e.target.value}
                     />
                 </div>
