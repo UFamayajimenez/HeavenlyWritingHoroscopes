@@ -16,7 +16,7 @@ const SignUp = () => {
     };
 
     const handleSubmit = () => {
-        const url = "http://localhost:80/SignUp";
+        const url = "http://localhost:5000/SignUp";
         axios.post(url, data)
             .then(res => {
                 console.log('post request sent');
