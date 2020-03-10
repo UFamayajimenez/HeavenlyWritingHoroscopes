@@ -72,7 +72,6 @@ const SignUp = () => {
                 <div className="row3">
             <div className="form-row">
                 <div className="col">
-                    <label htmlFor="locationOfBirth-label">Location of Birth</label>
                     <input type="text" className="form-control" placeholder="Location of Birth"
                            onChange={e => data.location = e.target.value}
                     />
@@ -96,10 +95,6 @@ const SignUp = () => {
                 <div className="row5">
             <div className="form-row">
                 <div className="col">
-
-                    <input type="text" className="form-control" placeholder="Username"/>
-                </div>
-                <div className="col">
                     <input type="text" className="form-control" placeholder="Password"
                            onChange={e => data.password = e.target.value}
                     />
@@ -111,7 +106,7 @@ const SignUp = () => {
             </div>
                     </div>
                 <div className="submitButton">
-            <button type="button" className="btn btn-outline-primary" onClick={handleSubmit}>Primary</button>
+            <button type="button" className="btn btn-outline-primary" onClick={handleSubmit}>Submit!</button>
                 </div>
         </form>
         </div>
