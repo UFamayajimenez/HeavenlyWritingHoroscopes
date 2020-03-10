@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import UserSchema from '../models/UserSchema.js';
+var UserSchema = require('../models/UserSchema.js');
 
 const create = async (req, res) => {
     console.log('post request received');
