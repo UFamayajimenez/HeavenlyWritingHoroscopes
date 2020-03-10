@@ -50,10 +50,12 @@ const SignUp = () => {
                     <label htmlFor="dateOfBirth-input">Date of Birth</label>
                     <input className="form-control" type="date" id="dateOfBirth-input"
                            onChange={e => {
-                               const date = e.target.value.split('-');
-                               data.DOB.year = date[0];
-                               data.DOB.month = date[1];
-                               data.DOB.day = date[2];
+                               if (e.target.value) {
+                                   const date = e.target.value.split('-');
+                                   data.DOB.year = date[0];
+                                   data.DOB.month = date[1];
+                                   data.DOB.day = date[2];
+                               }
                            }}
                     />
                 </div>
@@ -61,9 +63,11 @@ const SignUp = () => {
                     <label htmlFor="timeOfBirth-label">Time of Birth</label>
                     <input className="form-control" type="time" id="timeOfBirth-input"
                            onChange={e => {
-                               const time = e.target.value.split(':');
-                               data.time.hour = time[0];
-                               data.time.minute = time[1];
+                               if (e.target.value) {
+                                   const time = e.target.value.split(':');
+                                   data.time.hour = time[0];
+                                   data.time.minute = time[1];
+                               }
                            }}
                     />
                 </div>
