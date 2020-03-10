@@ -43,10 +43,10 @@
 // // // app.listen(config.port, () => console.log(`Server now running on port ${config.port}!`));
 
 
-const config = require('./config/config.js');
+//const config = require('./config/config.js');
 
 const express = require('./config/express.js');
 
 const app = express.init();
-app.listen(config.port, () => console.log(`Server now running on port ${config.port}!`));
+app.listen(process.env.port || require('./config/config.js').port, () => console.log(`Server now running on port 5000!`));
 
