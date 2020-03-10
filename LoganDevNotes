@@ -1,0 +1,13 @@
+I changed server.js so now it should resolve the path for index.html no matter what folder you stored the project in.
+So, my config.js is:
+
+export default{
+    db: {
+        uri: 'mongodb+srv://heavenlywriting:<password>@cluster0-u13yq.mongodb.net/test?retryWrites=true&w=majority', //place the URI of your mongo database here.
+    },
+    port: 5000
+};
+
+Replace <password> with the password to MongoDB admin account heavenlywriting.
+Start server from root directory with:
+    nodemon run-script server\server.js
