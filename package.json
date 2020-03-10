@@ -2,7 +2,6 @@
   "name": "react_template_repo",
   "version": "1.0.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "mocha server/tests",
@@ -37,6 +36,7 @@
     "react-dom": "^16.13.0",
     "react-hook-form": "^4.10.1",
     "react-toastify": "^5.5.0",
+    "require": "^2.4.20",
     "should": "^13.2.3",
     "supertest": "^4.0.2"
   },
