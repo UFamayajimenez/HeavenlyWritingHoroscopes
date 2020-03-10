@@ -3,7 +3,11 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    exampleRouter = require('../routes/examples.server.routes');
+    exampleRouter = require('../routes/examples.server.routes'),
+    cors = require('cors'),
+    newUserController = require('../controllers/newUserController.js');
+;
+
 
 module.exports.init = () => {
     /* 
@@ -11,10 +15,13 @@ module.exports.init = () => {
         - reference README for db uri
     */
     mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
-        useNewUrlParser: true
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true
+    }).then(() => {
+        console.log(`Successfully connected to mongoose database.`)
     });
-    mongoose.set('useCreateIndex', true);
-    mongoose.set('useFindAndModify', false);
 
     // initialize app
     const app = express();
@@ -25,12 +32,16 @@ module.exports.init = () => {
     // body parsing middleware
     app.use(bodyParser.json());
 
+    app.use(cors());
+
     // add a router
-    app.use('/api/example', exampleRouter);
+    // app.use('/api/example', exampleRouter);
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
         app.use(express.static(path.join(__dirname, '../../client/build')));
+
+        app.post('/SignUp', newUserController);
 
         // Handle React routing, return all requests to React app
         app.get('*', function(req, res) {
@@ -39,5 +50,5 @@ module.exports.init = () => {
     }
 
     return app
-}
+};
 

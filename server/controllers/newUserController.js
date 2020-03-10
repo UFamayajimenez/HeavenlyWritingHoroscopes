@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 var UserSchema = require('../models/UserSchema.js');
 
 const create = async (req, res) => {
@@ -26,4 +25,4 @@ const create = async (req, res) => {
     });
 };
 
-export default create;
+module.exports = create;
