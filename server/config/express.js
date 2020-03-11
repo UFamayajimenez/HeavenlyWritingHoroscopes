@@ -5,13 +5,17 @@ const path = require('path'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/examples.server.routes');
 
+import config from './config.js';
+
 module.exports.init = () => {
     /* 
         connect to database
         - reference README for db uri
     */
-    mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
+    mongoose.connect(config.db.uri, {
         useNewUrlParser: true
+    }, () => {
+        console.log('Connected to MongoDB');
     });
     mongoose.set('useCreateIndex', true);
     mongoose.set('useFindAndModify', false);
@@ -39,5 +43,5 @@ module.exports.init = () => {
     }
 
     return app
-}
+};
 
