@@ -1,4 +1,7 @@
-.bg{
+.home{
     text-align: center;
-    background: rgb(0,20,40);
+    background-image: url('../../assets/heavenlyWritingBkrnd3.jpg');
+
+    padding-bottom: 500px;
+
 }

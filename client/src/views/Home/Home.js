@@ -4,7 +4,8 @@ import './Home.css';
 
 const  Home = () => {
     return (
-        <div className="bg">
+        <div className="home">
+            <p>test</p>
         </div>
     );
 }

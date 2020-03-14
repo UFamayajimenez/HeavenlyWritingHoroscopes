@@ -9,12 +9,7 @@ import { useForm } from 'react-hook-form'; //having a lot of trouble getting rea
 const App = (props) => {
     return (
         <div>
-            <div
-                style={{
-                    background: '#001428'
-                }}
-            >
-                <NavBar />
+            <NavBar />
                 <Switch>
                     <Route exact path="/Home" component={Home} />
                     <Route exact path="/SignUp" component={SignUp} />
@@ -23,7 +18,6 @@ const App = (props) => {
                     </Route>
                     <Route component={NotFound}/>
                 </Switch>
-            </div>
         </div>
     );
 };
