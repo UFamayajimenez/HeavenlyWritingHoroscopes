@@ -6,7 +6,7 @@ const  Home = () => {
         <div className="home">
         <div className="sidenav">
             <div className="login-main-text">
-                <h1>Login to your Heavenly Writing account to access today's horoscope</h1>
+                <h1>Login to your Heavenly Writing account to access your personal horoscope</h1>
             </div>
         </div>
             <div className="main">

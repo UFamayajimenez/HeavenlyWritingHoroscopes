@@ -8,11 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = (props) => {
     return (
         <div>
-            <div
-                style={{
-                    background: '#001428'
-                }}
-            >
             <NavBar />
                 <Switch>
                     <Route exact path="/Home" component={Home} />
@@ -22,7 +17,6 @@ const App = (props) => {
                     </Route>
                     <Route component={NotFound}/>
                 </Switch>
-            </div>
         </div>
     );
 };
