@@ -5,10 +5,14 @@ import SignUp from "./views/SignUp/SignUp";
 import NotFound from "./views/NotFound";
 import NavBar from "./components/Header/NavBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useForm } from 'react-hook-form'; //having a lot of trouble getting react hook form to work (https://react-hook-form.com/)
 const App = (props) => {
     return (
         <div>
+            <div
+                style={{
+                    background: '#001428'
+                }}
+            >
             <NavBar />
                 <Switch>
                     <Route exact path="/Home" component={Home} />
@@ -18,6 +22,7 @@ const App = (props) => {
                     </Route>
                     <Route component={NotFound}/>
                 </Switch>
+            </div>
         </div>
     );
 };

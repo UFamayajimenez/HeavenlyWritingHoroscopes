@@ -27,7 +27,7 @@ const SignUp = () => {
     };
 
     return (
-        <div className="bg">
+        <div className="signUp">
             <h1>Heavenly Writing Subscription Form</h1>
             <form>
                 <div className="row1">
@@ -95,7 +95,7 @@ const SignUp = () => {
                 <div className="row5">
             <div className="form-row">
                 <div className="col">
-                    <input type="text" className="form-control" placeholder="Password"
+                    <input type="password" className="form-control" placeholder="Password"
                            onChange={e => data.password = e.target.value}
                     />
       
@@ -106,7 +106,7 @@ const SignUp = () => {
             </div>
                     </div>
                 <div className="submitButton">
-            <button type="button" className="btn btn-outline-primary" onClick={handleSubmit}>Submit!</button>
+            <button type="password" className="btn btn-outline-primary" onClick={handleSubmit}>Submit!</button>
                 </div>
         </form>
         </div>
