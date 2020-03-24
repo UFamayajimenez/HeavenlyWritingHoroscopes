@@ -5,8 +5,8 @@ const path = require('path'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/examples.server.routes'),
     cors = require('cors'),
-    newUserController = require('../controllers/newUserController.js');
-;
+    newUserController = require('../controllers/newUserController.js'),
+    config = require('./config.js');
 
 
 module.exports.init = () => {
@@ -14,7 +14,7 @@ module.exports.init = () => {
         connect to database
         - reference README for db uri
     */
-    mongoose.connect(process.env.DB_URI, {
+    mongoose.connect(process.env.DB_URI || config.db.uri, {
         useNewUrlParser: true,
         useCreateIndex: true,
         useFindAndModify: false,
@@ -50,6 +50,16 @@ module.exports.init = () => {
             res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
         });
     }
+
+    app.use(express.static(path.join(__dirname, '../../client/build')));
+
+    app.post('/SignUp', newUserController);
+
+    // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+        res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+    });
+
 
     return app
 };
