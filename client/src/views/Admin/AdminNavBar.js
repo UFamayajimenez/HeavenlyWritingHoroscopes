@@ -2,6 +2,11 @@ import React from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
 
 const AdminNavBar = () => {
+
+    // const onSignOut = () => {
+    //     do something here about signing out
+    // }
+
     return ( 
         <Navbar bg="dark" expand="lg" variant="dark" >
             <Navbar.Brand href="/admin/users">Heavenly Writing</Navbar.Brand>
