@@ -1,27 +1,78 @@
 body {
-    margin: 0;
+    font-family: "Lato", sans-serif;
 }
 
-.App {
+
+.home{
+    background: white;
+}
+
+
+.main-head{
+    height: 150px;
+    background: #FFF;
+
+}
+
+.sidenav {
+    height: 100%;
+    background-image: url('../../assets/heavenlyWritingBkrnd3.jpg');
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+.main {
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%;
+    }
+
+    .sidenav{
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+    }
+
+    .login-form{
+        padding-top: 200px;
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+}
+
+
+.login-main-text{
     text-align: center;
-    background: #282c34;
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
 }
 
-.App-logo {
-    height: 40vmin;
+.login-main-text h2{
+    font-weight: 300;
 }
 
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #09d3ac;
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #483475 !important;
 }

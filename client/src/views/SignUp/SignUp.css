@@ -1,27 +1,90 @@
 body {
-    margin: 0;
+    font-family: "Lato", sans-serif;
 }
 
-.App {
+.container{
+
+    padding-top: 20px;
+    background: white;
+
+    border: 2px solid;
+    border-radius: 25px;
+}
+
+.signUp{
     text-align: center;
-    background: #282c34;
+    background-image: url('../../assets/heavenlyWritingBkrnd3.jpg');
+
+    color: black;
+
+    height: 100%;
+    padding-bottom: 100px;
+    padding-top: 75px;
 }
 
-.App-logo {
-    height: 40vmin;
+.row1{
+
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.row2{
+    padding-bottom: 20px;
 }
 
-.App-link {
-    color: #09d3ac;
+.row3{
+    padding-bottom: 20px;
+}
+
+.row4{
+    padding-bottom: 20px;
+}
+
+.submitButton{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+
+
+
+input[type="text"], textarea {
+
+    background-color : #d1d1d1;
+
+}
+
+input[type="tel"], textarea {
+
+    background-color : #d1d1d1;
+
+}
+
+input[type="email"], textarea {
+
+    background-color : #d1d1d1;
+
+}
+
+input[type="time"], textarea {
+
+    background-color : #d1d1d1;
+
+}
+
+
+input[type="password"], textarea {
+
+    background-color : #d1d1d1;
+
+}
+
+input[type="date"], textarea {
+
+    background-color : #d1d1d1;
+
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #483475 !important;
 }
