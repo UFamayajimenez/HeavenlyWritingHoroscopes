@@ -5,16 +5,14 @@ const path = require('path'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/examples.server.routes'),
     cors = require('cors'),
-    newUserController = require('../controllers/newUserController.js'),
-    config = require('./config.js');
-
+    newUserController = require('../controllers/newUserController.js');
 
 module.exports.init = () => {
     /* 
         connect to database
         - reference README for db uri
     */
-    mongoose.connect(process.env.DB_URI || config.db.uri, {
+    mongoose.connect(process.env.DB_URI || require('./config.js').db.uri, {
         useNewUrlParser: true,
         useCreateIndex: true,
         useFindAndModify: false,
