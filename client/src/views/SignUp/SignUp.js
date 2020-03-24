@@ -16,7 +16,6 @@ const SignUp = () => {
     };
 
     const handleSubmit = () => {
-        // const url = 'http://localhost:5000/SignUp';
         axios.post('/SignUp', data)
             .then(res => {
                 console.log('post request sent');
