@@ -8,7 +8,7 @@ const path = require('path'),
     newUserController = require('../controllers/newUserController.js');
 
 module.exports.init = () => {
-    /* 
+    /*
         connect to database
         - reference README for db uri
     */
