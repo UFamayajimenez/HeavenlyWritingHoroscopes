@@ -20,7 +20,7 @@ const SignUp = () => {
     };
 
     const handleSubmit = () => {
-        axios.post("http://localhost:5000/SignUp", data)
+        axios.post('/SignUp', data)
             .then(res => {
                 console.log('post request sent');
                 console.log(res);
@@ -149,7 +149,7 @@ const SignUp = () => {
             </div>
                     </div>
                 <div className="submitButton">
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
                 </div>
         </form>
             </div>
