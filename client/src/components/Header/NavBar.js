@@ -4,7 +4,7 @@ import './NavBar.css';
 const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand" href="#">Heavenly Writing</a>
+            <a className="navbar-brand" href="/Home">Heavenly Writing</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -15,7 +15,7 @@ const NavBar = () => {
                         <a className="nav-link" href="/Home">Home <span className="sr-only">(current)</span></a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/SignUp">Sign up!</a>
+                        <a className="nav-link" href="/SignUp">Sign up</a>
                     </li>
                 </ul>
             </div>
