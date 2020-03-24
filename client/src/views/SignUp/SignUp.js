@@ -56,10 +56,12 @@ const SignUp = () => {
                         <label htmlFor="dateOfBirth-input">Date of Birth</label>
                         <input className="form-control" type="date" id="dateOfBirth-input" required
                            onChange={e => {
-                               const date = e.target.value.split('-');
-                               data.DOB.year = date[0];
-                               data.DOB.month = date[1];
-                               data.DOB.day = date[2];
+                               if (e.target.value) {
+                                   const date = e.target.value.split('-');
+                                   data.DOB.year = date[0];
+                                   data.DOB.month = date[1];
+                                   data.DOB.day = date[2];
+                               }
                            }}
                     />
                     </div>
@@ -67,9 +69,11 @@ const SignUp = () => {
                         <label htmlFor="timeOfBirth-label">Time of Birth</label>
                         <input className="form-control" type="time" id="timeOfBirth-input"
                            onChange={e => {
-                               const time = e.target.value.split(':');
-                               data.time.hour = time[0];
-                               data.time.minute = time[1];
+                               if (e.target.value) {
+                                   const time = e.target.value.split(':');
+                                   data.time.hour = time[0];
+                                   data.time.minute = time[1];
+                               }
                            }}
                         />
                         <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" onChange={e => {
@@ -124,12 +128,16 @@ const SignUp = () => {
                 <div className="row4">
             <div className="form-row">
                 <div className="col">
+
                     <input type="text" className="form-control" type = "email" placeholder="Email Address" required
+
                            onChange={e => data.email = e.target.value}
                     />
                 </div>
                 <div className="col">
+
                     <input type="text" className="form-control" type = "tel" placeholder="Phone Number" required
+
                            onChange={e => data.number = e.target.value}
                     />
                 </div>

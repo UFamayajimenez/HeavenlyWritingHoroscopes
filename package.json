@@ -2,7 +2,9 @@
   "name": "react_template_repo",
   "version": "1.0.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "type": "module",
+  "engines": {
+    "node": "13.7.0"
+  },
   "main": "index.js",
   "scripts": {
     "test": "mocha server/tests",
@@ -10,7 +12,7 @@
     "client": "cd client && npm start",
     "server": "nodemon server/server.js",
     "dev": "concurrently \"nodemon server/server.js\" \"cd client && npm run start\"",
-    "build": "cd client && npm build",
+    "build": "cd client && npm run-script build",
     "start": "node server/server.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
@@ -37,6 +39,7 @@
     "react-dom": "^16.13.0",
     "react-hook-form": "^4.10.1",
     "react-toastify": "^5.5.0",
+    "require": "^2.4.20",
     "should": "^13.2.3",
     "supertest": "^4.0.2"
   },

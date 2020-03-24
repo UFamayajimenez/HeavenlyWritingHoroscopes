@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+var mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     natalSign: {type: String},
@@ -12,4 +12,4 @@ const userSchema = new mongoose.Schema({
     //Check out - https://mongoosejs.com/docs/guide.html
 });
 
-export default mongoose.model('user', userSchema);
+module.exports = mongoose.model('user', userSchema);
