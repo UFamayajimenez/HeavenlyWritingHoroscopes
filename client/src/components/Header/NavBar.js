@@ -4,6 +4,7 @@ import {Navbar, Nav} from 'react-bootstrap';
 
 const NavBar = (props) => {
 
+    //navbar changes based on what user is logged in
 
     if(props.clientState == 1) {
         return (

@@ -9,15 +9,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminPage from './views/Admin/AdminPage';
 import ClientPage from './views/Client/ClientPage';
 
+
 const App = (props) => {
 
-    const [clientState, setClientState] = useState(2);
+    // 0: not logged in
+    // 1: admin logged in
+    // 2: client logged in
+    const [clientState, setClientState] = useState(0);
 
     return (
         <div>
             <NavBar clientState={clientState}/>
                 <Switch>
-                    <Route exact path="/Home" component={Home} />
+                    <Route exact path="/Home" render={(props) => <Home setClientState={setClientState}/>} />
                     <Route exact path="/SignUp" component={SignUp} />
                     <Route exact path="/">
                         <Redirect to="/Home" />
