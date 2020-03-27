@@ -3,6 +3,8 @@ var UserSchema = require('../models/UserSchema.js');
 const create = async (req, res) => {
     console.log('post request received');
 
+    // const formData = new FormData(req.body);
+    // console.log(formData.get("DOB"));
 
     // TODO: hash encryption on user data
     const data = {
