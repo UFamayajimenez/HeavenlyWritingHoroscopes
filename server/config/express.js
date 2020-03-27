@@ -35,19 +35,11 @@ module.exports.init = () => {
     // add a router
     // app.use('/api/example', exampleRouter);
 
-    app.use(express.static(path.join(__dirname, '../../client/build')));
-
-    // Handle React routing, return all requests to React app
-    app.get('*', function(req, res) {
-        res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
-    });
-
-
     app.post('/SignUp', newUserController);
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
-        app.use(express.static(path.join(__dirname, '../../client/build/static')));
+        app.use(express.static(path.join(__dirname, '../../client/build')));
 
         app.post('/SignUp', newUserController);
 
@@ -56,6 +48,15 @@ module.exports.init = () => {
             res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
         });
     }
+
+    app.use(express.static(path.join(__dirname, '../../client/build')));
+
+    app.post('/SignUp', newUserController);
+
+    // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+        res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+    });
 
 
     return app
