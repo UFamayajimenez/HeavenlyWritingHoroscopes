@@ -21,11 +21,12 @@ const SignUp = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // const data = new FormData(event.target);
+        // const data = new FormData(event.target); maybe easier way to handle the data
         axios.post('/SignUp', data)
             .then(res => {
                 console.log('post request sent');
                 console.log(res);
+                window.location.reload(false);
         })
             .catch(err => {
                 console.log(err);
