@@ -9,7 +9,7 @@ const create = async (req, res) => {
         natalSign: req.body.natalSign,
         name: req.body.name.first + ' ' + req.body.name.last,
         DOB: {month: req.body.DOB.month, day: req.body.DOB.day, year: req.body.DOB.year},
-        location: req.body.location,
+        location: {city: req.body.location.city, state: req.body.location.state, zip: req.body.location.zip},
         time: {hour: req.body.time.hour, minute: req.body.time.minute},
         email: req.body.email,
         number: req.body.number,
