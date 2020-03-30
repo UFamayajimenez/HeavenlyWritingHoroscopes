@@ -16,7 +16,8 @@ const SignUp = () => {
         time: {hour: '', minute: ''},
         email: '',
         number: '',
-        password: ''
+        password: '',
+        password2: ''
     };
 
     const handleSubmit = () => {
@@ -153,6 +154,7 @@ const SignUp = () => {
                 </div>
                 <div className="col">
                     <input type="password" className="form-control" placeholder="Confirm Password" required/>
+                            onChage={e => data.password2 = e.target.value}
                 </div>
             </div>
                     </div>
