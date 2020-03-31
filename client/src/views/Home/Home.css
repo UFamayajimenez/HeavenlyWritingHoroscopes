@@ -62,14 +62,14 @@ body {
 }
 
 
-.login-main-text{
+.home-login-main-text{
     text-align: center;
     margin-top: 20%;
     padding: 60px;
     color: #fff;
 }
 
-.login-main-text h2{
+.home-login-main-text h2{
     font-weight: 300;
 }
 

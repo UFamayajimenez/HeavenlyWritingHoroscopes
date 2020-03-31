@@ -42,7 +42,7 @@ const SignUp = () => {
 
     return (
         <div className="signUp">
-            <div className="container">
+            <div className="signUpContainer">
                 <h1>Heavenly Writing Subscription Form</h1>
                 <p>To receive personalized horoscopes from Heavenly Writing please fill in the information below.</p>
                 <form>

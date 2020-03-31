@@ -1,0 +1,21 @@
+.adminBackground{
+    background-image: url('./stars.jpeg');
+    padding-bottom: 282px;
+    padding-top: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.container{
+    padding: 40px;
+    background: white;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: white;
+    border-spacing: 40px;
+}
+
+.adminPage{
+
+    color:black;
+
+}
