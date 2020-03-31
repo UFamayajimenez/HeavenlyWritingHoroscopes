@@ -20,15 +20,24 @@ const SignUp = () => {
         password2: ''
     };
 
-    const handleSubmit = () => {
-        axios.post('/SignUp', data)
+    const handleSubmit = (e) => {
+        axios.post('/api/users/SignUp', data)
             .then(res => {
-                console.log('post request sent');
+                console.log("Registration was successful!");
                 console.log(res);
         })
             .catch(err => {
+                //All possible errors messages are below
+                if (err.response.data.name){console.log(err.response.data.name)};
+                if (err.response.data.DOB){console.log(err.response.data.DOB)};
+                if (err.response.data.location){console.log(err.response.data.location)};
+                if (err.response.data.time){console.log(err.response.data.time)};
+                if (err.response.data.email){console.log(err.response.data.email)};
+                if (err.response.data.password){console.log(err.response.data.password)};
+                if (err.response.data.password2){console.log(err.response.data.password2)};       //confirm password field
                 console.log(err);
             })
+        e.preventDefault();     //This is to prevent reloading in the event that an error occurs
     };
 
     return (
@@ -153,8 +162,10 @@ const SignUp = () => {
       
                 </div>
                 <div className="col">
-                    <input type="password" className="form-control" placeholder="Confirm Password" required/>
-                            onChage={e => data.password2 = e.target.value}
+                    <input type="password" className="form-control" placeholder="Confirm Password" required
+                            onChange={e => data.password2 = e.target.value}
+                    />
+
                 </div>
             </div>
                     </div>

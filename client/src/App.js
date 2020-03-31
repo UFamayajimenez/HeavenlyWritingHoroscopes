@@ -5,6 +5,8 @@ import SignUp from "./views/SignUp/SignUp";
 import NotFound from "./views/NotFound";
 import NavBar from "./components/Header/NavBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 const App = (props) => {
     return (
         <div>

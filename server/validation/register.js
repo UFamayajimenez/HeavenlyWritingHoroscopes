@@ -5,30 +5,48 @@ module.exports = function validateRegisterInput(data) {
     let errors = {};
 
     //Convert empty fields to an empty string so we can use validator functions
-    functions
-        data.name = !isEmpty(data.name) ? data.name : "";
-        data.email = !isEmpty(data.email) ? data.email : "";
-        data.password = !isEmpty(data.password) ? data.password : "";
-        data.password2 = !isEmpty(data.password2) ? data.password2 : "";
-        
-        //Might be optional and left blank
-        data.number = !isEmpty(data.number) ? data.number : "";
+    data.natalSign = !isEmpty(data.natalSign) ? data.natalSign : "";
 
-        data.DOB.month = !isEmpty(data.DOB.month) ? data.DOB.month : "";
-        data.DOB.day = !isEmpty(data.DOB.day) ? data.DOB.day : "";
-        data.DOB.year = !isEmpty(data.DOB.year) ? data.DOB.year : "";
-        
-        //Might have default value of 12:00:00 PM
-        data.time.hour = !isEmpty(data.time.hour) ? data.time.hour : "";
-        data.time.minute = !isEmpty(data.time.minute) ? data.time.hour: "";
+    data.name.first = !isEmpty(data.name.first) ? data.name.first : "";
+    data.name.last = !isEmpty(data.name.last) ? data.name.last : "";
 
-        data.location = !isEmpty(data.location) ? data.location : "";
+    data.DOB.month = !isEmpty(data.DOB.month) ? data.DOB.month : "";
+    data.DOB.day = !isEmpty(data.DOB.day) ? data.DOB.day : "";
+    data.DOB.year = !isEmpty(data.DOB.year) ? data.DOB.year : "";
 
-        //data.natalSign = !isEmpty(data.natalSign) ? data.natalSign : "";    //Need calculation
+    data.location.city = !isEmpty(data.location.city) ? data.location.city : "";
+    data.location.state = !isEmpty(data.location.state) ? data.location.state : "";
+    data.location.zip = !isEmpty(data.location.zip) ? data.location.state : "";
+
+    data.time.hour = !isEmpty(data.time.hour) ? data.time.hour : "";
+    data.time.minute = !isEmpty(data.time.minute) ? data.time.minute : "";
+
+    data.email = !isEmpty(data.email) ? data.email : "";
+
+    data.number = !isEmpty(data.number) ? data.number : "";
+
+    data.password = !isEmpty(data.password) ? data.password : "";
+    data.password2 = !isEmpty(data.password2) ? data.password2 : "";
+
 
     //Name checks
-    if (Validator.isEmpty(data.name)) {
+    if (Validator.isEmpty(data.name.first) || Validator.isEmpty(data.name.last)) {
         errors.name = "Name field is required";
+    }
+
+    //Date of birth checks
+    if (Validator.isEmpty(data.DOB.month) || Validator.isEmpty(data.DOB.day) || Validator.isEmpty(data.DOB.year)) {
+        errors.DOB = "Date of birth field is required";
+    }
+
+    //Location of birth checks
+    if (Validator.isEmpty(data.location.city) || Validator.isEmpty(data.location.state) || Validator.isEmpty(data.location.zip)) {
+        errors.location = "Location of birth field is required";
+    }
+
+    //Time of birth checks
+    if (Validator.isEmpty(data.time.hour) || Validator.isEmpty(data.time.minute)) {
+        errors.time = "Time of birth field is required";
     }
     
     //Email checks
@@ -44,7 +62,7 @@ module.exports = function validateRegisterInput(data) {
     }
 
     if (Validator.isEmpty(data.password2)) {
-        errors.password2 = "Confirm password filed is required";
+        errors.password2 = "Confirm password field is required";
     }
 
     if (!Validator.equals(data.password, data.password2)){

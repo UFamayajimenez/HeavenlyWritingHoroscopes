@@ -16,6 +16,7 @@
     "start": "node server/server.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
+  "proxy": "http://localhost:5000",
   "repository": {
     "type": "git",
     "url": "https://github.com/UFWebApps/React_Template_Repo.git"
@@ -43,6 +44,7 @@
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.13.0",
     "react-hook-form": "^4.10.1",
+    "react-scripts": "^3.4.1",
     "react-toastify": "^5.5.0",
     "require": "^2.4.20",
     "should": "^13.2.3",
