@@ -18,6 +18,7 @@ const AdminNavBar = () => {
                     <Nav.Link href="/admin/overview">Overview</Nav.Link>
                     <Nav.Link href="/admin/statistics">Statistics</Nav.Link>
                     <Nav.Link href="/admin/settings">Settings</Nav.Link>
+                    <Nav.Link href="/admin/create">Create Email</Nav.Link>
                     <Nav.Link href="/admin/signout" style={{color: "red"}}>Log Out</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
