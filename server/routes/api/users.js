@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const config = require("../../config/config.js");
+const keys = require("../../config/config.js");
+const axios = require("axios");
 
 
 //Load input validation
@@ -26,27 +27,28 @@ router.post("/Signup", (req,res) => {
             return res.status(400).json({ email: "Email already exists" });
         } else {
             const newUser = new User({
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password,
-
-                number: req.body.number,
-                
+                natalSign: req.body.natalSign,
+                name: {
+                    first: req.body.name.first,
+                    last: req.body.name.last
+                },
                 DOB: {
                     month: req.body.DOB.month,
                     day: req.body.DOB.day,
                     year: req.body.DOB.year
                 },
-
+                location: {
+                    city: req.body.location.city,
+                    state: req.body.location.state,
+                    zip: req.body.location.zip
+                },
                 time: {
                     hour: req.body.time.hour,
                     minute: req.body.time.minute
                 },
-
-                location: req.body.location
-
-                //Need to add other user information - natal sign
-
+                email: req.body.email,
+                number: req.body.number,
+                password: req.body.password
             });
 
             //Hash password before saving in database
