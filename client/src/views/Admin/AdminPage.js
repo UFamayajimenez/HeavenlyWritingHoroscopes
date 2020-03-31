@@ -7,6 +7,7 @@ import Settings from './Settings';
 import Database from './Database';
 import Overview from './Overview';
 import Statistics from './Statistics';
+import CreateEmail from "./CreateEmail";
 
 
 const AdminPage = (props) => {
@@ -29,6 +30,7 @@ const AdminPage = (props) => {
                 <Route exact path="/admin/overview" component={Overview}/>
                 <Route exact path="/admin/statistics" component={Statistics}/>
                 <Route exact path="/admin/settings" component={Settings}/>
+                <Route exact path="/admin/create" component={CreateEmail}/>
             </Switch>
         </div>
     );
