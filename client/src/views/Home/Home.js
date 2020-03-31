@@ -12,7 +12,7 @@ const  Home = (props) => {
         var username = e.target[0].value;
         var password = e.target[1].value;
         if(username == 'heavenlywriting@gmail.com' && password == "DakotaFanClub") {
-            props.setClientState(1);    
+            props.setClientState(1);
         }
         else{
             props.setClientState(2);
