@@ -13,7 +13,7 @@ const SignUp = () => {
             state: '',
             zip: ''
         },
-        time: {hour: '', minute: ''},
+        time: {hour: '00', minute: '00'},
         email: '',
         number: '',
         password: '',
