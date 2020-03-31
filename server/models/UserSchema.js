@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     natalSign: {type: String},
     name: {type: String, required: true},
     DOB: {month:{type : String}, day:{type : String}, year:{type : String}, type: JSON, required: true},
-    location: {type: String},
+    location: {city:{type : String}, state:{type : String}, zip:{type : String}, type: JSON, required: true},
     time: {hour:{type : String}, minute:{type : String}},
     email: {type: String, required: true},
     number: {type: String},
