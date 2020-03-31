@@ -6,6 +6,8 @@ const path = require('path'),
     exampleRouter = require('../routes/examples.server.routes'),
     cors = require('cors'),
     newUserController = require('../controllers/newUserController.js');
+    newHoroscopeController = require('../controllers/newHoroscopeController.js');
+
 
 module.exports.init = () => {
     /*
@@ -36,12 +38,14 @@ module.exports.init = () => {
     // app.use('/api/example', exampleRouter);
 
     app.post('/SignUp', newUserController);
+    app.post('/Horoscope', newHoroscopeController);
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
         app.use(express.static(path.join(__dirname, '../../client/build')));
 
         app.post('/SignUp', newUserController);
+        app.post('/Horoscope', newHoroscopeController);
 
         // Handle React routing, return all requests to React app
         app.get('*', function(req, res) {

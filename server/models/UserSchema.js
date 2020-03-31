@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
+//Maybe should have a userID so that we don't have to rely on 
+//multiple checks to make sure user is unique.
 const userSchema = new mongoose.Schema({
     natalSign: {type: String},
     name: {type: String, required: true},
@@ -12,4 +14,17 @@ const userSchema = new mongoose.Schema({
     //Check out - https://mongoosejs.com/docs/guide.html
 });
 
-module.exports = mongoose.model('user', userSchema);
+const info = function(userName, callback) {
+    var user = mongoose.model('User', userSchema);
+    user.findOne({'name': userName}, function (err, userschema){
+        if (err) console.log("error 8");
+        console.log('found: ', userschema);
+        callback("", userschema)
+    });
+}
+
+module.exports = {
+    all: mongoose.model('user', userSchema),
+    info: info
+};
+

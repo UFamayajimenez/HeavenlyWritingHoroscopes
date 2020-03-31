@@ -16,7 +16,7 @@ const create = async (req, res) => {
         password: req.body.password
     };
 
-    await UserSchema.create(data, (err, newListing) => {
+    await UserSchema.all.create(data, (err, newListing) => {
         if (err) console.log(err);
         else {
             console.log('New user saved: ', newListing);
