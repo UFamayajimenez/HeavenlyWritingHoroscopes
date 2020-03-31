@@ -2,7 +2,7 @@ body {
     font-family: "Lato", sans-serif;
 }
 
-.container{
+.signUpContainer{
 
     padding-top: 20px;
     background: white;
@@ -20,6 +20,10 @@ body {
     height: 100%;
     padding-bottom: 100px;
     padding-top: 75px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
 }
 
 .row1{

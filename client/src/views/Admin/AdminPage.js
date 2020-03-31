@@ -12,7 +12,7 @@ import Statistics from './Statistics';
 const AdminPage = (props) => {
 
     return (
-        <div>
+        <div className="adminPage">
             <link
                 rel="stylesheet"
                 href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"

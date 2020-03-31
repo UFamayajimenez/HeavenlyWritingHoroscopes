@@ -23,7 +23,7 @@ const  Home = (props) => {
     return (
         <div className="home">
         <div className="sidenav">
-            <div className="login-main-text">
+            <div className="home-login-main-text">
                 <h1>Login to your Heavenly Writing account to access your personal horoscope</h1>
             </div>
         </div>

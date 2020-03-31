@@ -8,7 +8,7 @@ import './ClientPage.css'
 const ClientPage = (props) => {
 
     return (
-        <div>
+        <div className="clientPage">
             <link
                 rel="stylesheet"
                 href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
