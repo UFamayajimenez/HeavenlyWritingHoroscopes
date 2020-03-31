@@ -153,8 +153,9 @@ const SignUp = () => {
       
                 </div>
                 <div className="col">
-                    <input type="password" className="form-control" placeholder="Confirm Password" required/>
+                    <input type="password" className="form-control" placeholder="Confirm Password" required
                             onChage={e => data.password2 = e.target.value}
+                           />
                 </div>
             </div>
                     </div>
