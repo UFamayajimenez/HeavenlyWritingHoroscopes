@@ -5,10 +5,8 @@ import SignUp from "./views/SignUp/SignUp";
 import NotFound from "./views/NotFound";
 import NavBar from "./components/Header/NavBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import AdminPage from './views/Admin/AdminPage';
 import ClientPage from './views/Client/ClientPage';
-
 
 const App = (props) => {
 
