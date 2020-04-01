@@ -72,33 +72,33 @@ const  Home = (props) => {
         </div>
         
         <div className="home">
-            <div className="sidenav">
-                <div className="home-login-main-text">
-                    <h1>Login to your Heavenly Writing account to access your personal horoscope</h1>
+            <div className="rightSide">
+                <form onSubmit={handleSubmit}>
+                    <div className="login">
+                    <div className="form-group">
+                        <label>Email Address</label>
+                        <input type="email" className="form-control" placeholder="Email" required
+                               onChange={e => data.email = e.target.value}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input type="password" className="form-control" placeholder="Password" required
+                               onChange={e => data.password = e.target.value}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary" onClick={onSubmit}>Login</button>
+                    </div>
+                </form>
+                <div className="accountText">
+                <p>
+                    Don't have an account? Sign up <a href="SignUp">here</a>.
+                </p>
                 </div>
             </div>
-            <div className="main">
-                <div className="col-md-6 col-sm-12">
-                    <div className="login-form">
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label>Email Address</label>
-                                <input type="email" className="form-control" placeholder="Email" required
-                                       onChange={e => data.email = e.target.value}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Password</label>
-                                <input type="password" className="form-control" placeholder="Password" required
-                                       onChange={e => data.password = e.target.value}
-                                />
-                            </div>
-                            <button type="submit" className="btn btn-primary" onClick={onSubmit}>Login</button>
-                        </form>
-                        <p>
-                            Don't have an account? Sign up <a href="SignUp">here</a>.
-                        </p>
-                    </div>
+            <div className="leftSide">
+                <div className="home-login-main-text">
+                <h1>Login to your Heavenly Writing account to access your personal horoscope</h1>
                 </div>
             </div>
         </div>
