@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './SignUp.css';
+import { Redirect } from 'react-router-dom';
 
 const SignUp = () => {
+
+    const [register, setRegister] = useState(0);
 
     const data = {
         natalSign: '',
@@ -13,26 +16,42 @@ const SignUp = () => {
             state: '',
             zip: ''
         },
-        time: {hour: '', minute: ''},
+        time: {hour: '00', minute: '00'},
         email: '',
         number: '',
-        password: ''
+        password: '',
+        password2: '',
+        admin: false
     };
 
-    const handleSubmit = () => {
-        axios.post('/SignUp', data)
+    const handleSubmit = (e) => {
+        axios.post('/api/users/SignUp', data)
             .then(res => {
-                console.log('Signup request sent');
+                console.log("Registration was successful!");
                 console.log(res);
+                setRegister(1);
         })
             .catch(err => {
+                //All possible errors messages are below
+                if (err.response.data.name){console.log(err.response.data.name)};
+                if (err.response.data.DOB){console.log(err.response.data.DOB)};
+                if (err.response.data.location){console.log(err.response.data.location)};
+                if (err.response.data.time){console.log(err.response.data.time)};
+                if (err.response.data.email){console.log(err.response.data.email)};
+                if (err.response.data.password){console.log(err.response.data.password)};
+                if (err.response.data.password2){console.log(err.response.data.password2)};       //confirm password field
                 console.log(err);
             })
+        e.preventDefault();     //This is to prevent reloading in the event that an error occurs
     };
+
+    if (register === 1){
+        return <Redirect to='/Home' />
+    }
 
     return (
         <div className="signUp">
-            <div className="container">
+            <div className="signUpContainer">
                 <h1>Heavenly Writing Subscription Form</h1>
                 <p>To receive personalized horoscopes from Heavenly Writing please fill in the information below.</p>
                 <form>
@@ -152,7 +171,10 @@ const SignUp = () => {
       
                 </div>
                 <div className="col">
-                    <input type="password" className="form-control" placeholder="Confirm Password" required/>
+                    <input type="password" className="form-control" placeholder="Confirm Password" required
+                            onChange={e => data.password2 = e.target.value}
+                    />
+
                 </div>
             </div>
                     </div>
