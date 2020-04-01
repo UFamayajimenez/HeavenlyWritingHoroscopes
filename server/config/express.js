@@ -6,7 +6,8 @@ const path = require('path'),
     exampleRouter = require('../routes/examples.server.routes'),
     cors = require('cors'),
     newUserController = require('../controllers/newUserController.js'),
-    passport = require("passport");
+    passport = require("passport"),
+    users = require("./routes/api/users");
 
 
 module.exports.init = () => {
@@ -42,7 +43,17 @@ module.exports.init = () => {
     // add a router
     // app.use('/api/example', exampleRouter);
 
-    app.post('/SignUp', newUserController);
+    // app.post('/SignUp', newUserController);
+
+    //Passport middleware
+    app.use(passport.initialize());
+
+    // Passport config
+    require("./config/passport")(passport);
+
+    // Routes
+    app.use("/api/users", users);
+
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
@@ -57,8 +68,6 @@ module.exports.init = () => {
     }
 
     app.use(express.static(path.join(__dirname, '../../client/build')));
-
-    app.post('/SignUp', newUserController);
 
     // Handle React routing, return all requests to React app
     app.get('*', function(req, res) {
