@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom'
 import {Form, FormControl, Button, Row, Col} from 'react-bootstrap';
 
 const Settings= (props) => {
@@ -13,6 +14,11 @@ const Settings= (props) => {
 
     }
 
+
+    if (sessionStorage.getItem("loggedStatus") == 0){
+        return <Redirect to='/Home' />
+    }
+    
     return(
         <div className="clientBackground">
             <div className="bigContainer">
