@@ -5,7 +5,9 @@ const path = require('path'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/examples.server.routes'),
     cors = require('cors'),
-    newUserController = require('../controllers/newUserController.js');
+    newUserController = require('../controllers/newUserController.js'),
+    passport = require("passport");
+
 
 module.exports.init = () => {
     /*
@@ -28,6 +30,11 @@ module.exports.init = () => {
     app.use(morgan('dev'));
 
     // body parsing middleware
+    app.use(
+        bodyParser.urlencoded({
+            extended: false
+        })
+    );
     app.use(bodyParser.json());
 
     app.use(cors());
