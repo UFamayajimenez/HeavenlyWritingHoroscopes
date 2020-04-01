@@ -31,8 +31,7 @@ import NavBar from '../../components/Header/NavBar';
 
 const  Home = (props) => {
     
-    // const [login, setLogin] = useState(0);
-    var login = 0;
+    const [login, setLogin] = useState(0);
     
     const data = {
         email: '',
@@ -44,11 +43,8 @@ const  Home = (props) => {
             .then( res => {
                 console.log("Login was successful!");
                 console.log(res);
-                 if (res.data.user.admin){
-                     login = 2;
-                     window.location.reload(true);
-                 }
-                 else {login = 1;};
+                if (res.data.user.admin){setLogin(2)}
+                else {setLogin(1)};
             })
             .catch ( err => {
                 console.log(err);
