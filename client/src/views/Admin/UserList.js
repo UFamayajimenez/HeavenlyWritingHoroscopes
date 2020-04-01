@@ -71,9 +71,20 @@ const UserList = (props) => {
                                     <td>Reno, CA</td>
                                     <td>hello@yahoo.com</td>
                                     <td>867-5309</td>
-                                    <td>peepeepoopoo369</td>
-                                    <td>uhohstinky</td>
+                                    <td>kitty123</td>
+                                    <td>password123</td>
                                     <td>Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Other</td>
+                                    <td>Person</td>
+                                    <td>2/3/2010</td>
+                                    <td>Reno, CA</td>
+                                    <td>klondike@gmail.com</td>
+                                    <td>867-5309</td>
+                                    <td>puppy321</td>
+                                    <td>drowssap321</td>
+                                    <td>No</td>
                                 </tr>
                             </tbody>
                         </Table>
