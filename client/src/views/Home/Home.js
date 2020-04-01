@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import './Home.css';
-import {Router, Redirect} from 'react-router-dom';
+import {Router, Redirect, withRouter} from 'react-router-dom';
 
 
 
@@ -30,6 +30,9 @@ import {Router, Redirect} from 'react-router-dom';
         //intialization of form variables
 
 const  Home = (props) => {
+    
+    const [login, setLogin] = useState(0);
+    
     const data = {
         email: '',
         password: ''
@@ -40,6 +43,8 @@ const  Home = (props) => {
             .then( res => {
                 console.log("Login was successful!");
                 console.log(res);
+                if (res.data.user.admin){setLogin(2)}
+                else {setLogin(1)};
             })
             .catch ( err => {
                 if (err.response.data.email) {console.log(err.response.data.email)};
@@ -50,6 +55,13 @@ const  Home = (props) => {
             });
         e.preventDefault();
     };
+
+
+    if (login === 1){
+        return <Redirect to='/client' />
+    } else if (login === 2){
+        return <Redirect to='/admin' />
+    }
 
     return (
         <div className="home">

@@ -48,7 +48,8 @@ router.post("/Signup", (req,res) => {
                 },
                 email: req.body.email,
                 number: req.body.number,
-                password: req.body.password
+                password: req.body.password,
+                admin: req.body.admin
             });
 
             //Hash password before saving in database
@@ -103,6 +104,7 @@ router.post("/login", (req, res) => {
                     },
                     (err, token) => {
                         res.json( {
+                            user: user,
                             success: true,
                             token: "Bearer " + token
                         });

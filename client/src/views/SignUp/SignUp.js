@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './SignUp.css';
+import { Redirect } from 'react-router-dom';
 
 const SignUp = () => {
+
+    const [register, setRegister] = useState(0);
 
     const data = {
         natalSign: '',
@@ -17,7 +20,8 @@ const SignUp = () => {
         email: '',
         number: '',
         password: '',
-        password2: ''
+        password2: '',
+        admin: false
     };
 
     const handleSubmit = (e) => {
@@ -25,6 +29,7 @@ const SignUp = () => {
             .then(res => {
                 console.log("Registration was successful!");
                 console.log(res);
+                setRegister(1);
         })
             .catch(err => {
                 //All possible errors messages are below
@@ -39,6 +44,10 @@ const SignUp = () => {
             })
         e.preventDefault();     //This is to prevent reloading in the event that an error occurs
     };
+
+    if (register === 1){
+        return <Redirect to='/Home' />
+    }
 
     return (
         <div className="signUp">

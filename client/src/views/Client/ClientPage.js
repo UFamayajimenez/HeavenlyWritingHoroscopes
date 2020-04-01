@@ -16,7 +16,7 @@ const ClientPage = (props) => {
                 crossOrigin="anonymous"
             />
             <div>
-                {/* <ClientNavBar/> */}
+                { <ClientNavBar/> }
             </div>
             
             <Switch>
