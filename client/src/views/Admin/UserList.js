@@ -37,18 +37,15 @@ const UserList = (props) => {
                         <h1 align="center" > List of Users </h1>
                     </div>
                     <div className="" style={{paddingTop:  "10px"}}>
-                        <Form inline className="float-right" variant= "dark">
-                            <FormControl 
-                                type="text" 
-                                placeholder="Search" 
-                                className=" mr-sm-2" 
-                                onChange={filterUpdate} 
-                                   
+                        
+                        <form inline className="float-right">
+                            <input type="text" className="form-control" placeholder="Name" required
+                            onChange={filterUpdate}
                             />
-                        </Form>
+                        </form>
                     </div>
                     <div style={{padding: "10px"}}>
-                        <Table striped bordered hover size="sm" variant="dark">
+                        <table striped bordered hover size="sm" style={{background: "black", color: "white"}}>
                             <thead>
                                 <tr>
                                     <th> First Name</th>
@@ -87,7 +84,7 @@ const UserList = (props) => {
                                     <td>No</td>
                                 </tr>
                             </tbody>
-                        </Table>
+                        </table>
                         
                     </div>
                 </div>

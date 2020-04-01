@@ -22,41 +22,41 @@ const Settings= (props) => {
                         <hr/>
                     </div>
                     <div>
-                        <Form>
-                            <Row>
-                                <Col>
-                                    <FormControl type="email" placeholder="Enter new email"/>
-                                </Col>
-                                <Col>
-                                    <Button 
+                        <form>
+                            <row>
+                                <col>
+                                    <formcontrol type="email" placeholder="Enter new email"/>
+                                </col>
+                                <col>
+                                    <button 
                                         variant="primary" 
                                         type="submit"
                                         onClick={handleEmail}>
                                         Confirm New Email
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </Form>
+                                    </button>
+                                </col>
+                            </row>
+                        </form>
                     </div>
                     <div>
                     <hr/>
-                        <Form>
-                            <Row>
-                                <Col>
-                                    <FormControl type="password" placeholder="Old Password"/>
-                                    <FormControl type="password" placeholder="New Password"/>
-                                    <FormControl type="password" placeholder="Confirm New Password"/>
-                                </Col>
-                                <Col>
-                                    <Button
+                        <form>
+                            <row>
+                                <col>
+                                    <formcontrol type="password" placeholder="Old Password"/>
+                                    <formcontrol type="password" placeholder="New Password"/>
+                                    <formcontrol type="password" placeholder="Confirm New Password"/>
+                                </col>
+                                <col>
+                                    <button
                                         variant="primary"
                                         type="submit"
                                         onClick={handlePassword}>
                                         Confirm New Password
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </Form>
+                                    </button>
+                                </col>
+                            </row>
+                        </form>
                     </div>
 
                 </div>
@@ -66,13 +66,13 @@ const Settings= (props) => {
                         <hr/>
                     </div>
                     <div>
-                        <Form>
-                            <Form.Check
+                        <form>
+                            <Form.check
                                 type="checkbox"
                                 label="I would like to receive notifications on my phone"
                                 className="checkboxes"
                                 />
-                            <Form.Check
+                            <Form.check
                                 type="checkbox"
                                 label="I would like to receive notifications on my calendar"
                                 className="checkboxes"
@@ -88,7 +88,7 @@ const Settings= (props) => {
                                 onClick={handleNotifications}>
                                     Update My Preferences
                             </Button>
-                        </Form>
+                        </form>
                     </div>
                 </div>
             </div>
