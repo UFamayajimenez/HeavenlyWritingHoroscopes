@@ -80,49 +80,49 @@ const  Home = (props) => {
         return <Redirect to='/client' />
     } else if (sessionStorage.getItem("loggedStatus") == 2){
         return <Redirect to='/admin' />
-
     }
+    else {
+        return (
+            <div>
+                <div>
+                    <NavBar/>
 
-    return (
-        <div>
-        <div>
-            <NavBar/>
+                </div>
 
-        </div>
-
-        <div className="home">
-            <div className="rightSide">
-                <form onSubmit={handleSubmit}>
-                    <div className="login">
-                    <div className="form-group">
-                        <label>Email Address</label>
-                        <input type="email" className="form-control" placeholder="Email" required
-                               onChange={e => data.email = e.target.value}
-                        />
+                <div className="home">
+                    <div className="rightSide">
+                        <form onSubmit={handleSubmit}>
+                            <div className="login">
+                                <div className="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" className="form-control" placeholder="Email" required
+                                           onChange={e => data.email = e.target.value}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Password</label>
+                                    <input type="password" className="form-control" placeholder="Password" required
+                                           onChange={e => data.password = e.target.value}
+                                    />
+                                </div>
+                                <button type="submit" className="btn btn-primary" onClick={onSubmit}>Login</button>
+                            </div>
+                        </form>
+                        <div className="accountText">
+                            <p>
+                                Don't have an account? Sign up <a href="SignUp">here</a>.
+                            </p>
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input type="password" className="form-control" placeholder="Password" required
-                               onChange={e => data.password = e.target.value}
-                        />
+                    <div className="leftSide">
+                        <div className="home-login-main-text">
+                            <h1>Login to your Heavenly Writing account to access your personal horoscope</h1>
+                        </div>
                     </div>
-                    <button type="submit" className="btn btn-primary" onClick={onSubmit}>Login</button>
-                    </div>
-                </form>
-                <div className="accountText">
-                <p>
-                    Don't have an account? Sign up <a href="SignUp">here</a>.
-                </p>
                 </div>
             </div>
-            <div className="leftSide">
-                <div className="home-login-main-text">
-                <h1>Login to your Heavenly Writing account to access your personal horoscope</h1>
-                </div>
-            </div>
-        </div>
-        </div>
-    );
+        );
+    }
 
     // } else{
     //     return (
