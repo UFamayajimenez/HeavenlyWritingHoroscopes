@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './SignUp.css';
 import { Redirect } from 'react-router-dom';
+import NavBar from '../../components/Header/NavBar';
 
 const SignUp = () => {
 
@@ -50,6 +51,10 @@ const SignUp = () => {
     }
 
     return (
+        <div>
+        <div>
+            <NavBar/>
+        </div>
         <div className="signUp">
             <div className="signUpContainer">
                 <h1>Heavenly Writing Subscription Form</h1>
@@ -183,6 +188,7 @@ const SignUp = () => {
                 </div>
         </form>
             </div>
+        </div>
         </div>
     );
 };
