@@ -1,10 +1,12 @@
-var UserSchema = require('../models/UserSchema.js');
+var UserModel = require('../models/UserSchema.js');
+axios = require('axios');
 
 const create = async (req, res) => {
     console.log('post request received');
 
 
     // TODO: hash encryption on user data
+    // Design JSON
     const data = {
         natalSign: req.body.natalSign,
         name: req.body.name.first + ' ' + req.body.name.last,
@@ -16,13 +18,46 @@ const create = async (req, res) => {
         password: req.body.password
     };
 
-    await UserSchema.create(data, (err, newListing) => {
+    // Add user to mongoDB
+    await UserModel.create(data, (err, newListing) => {
         if (err) console.log(err);
         else {
             console.log('New user saved: ', newListing);
-            res.send('Success!');
         }
     });
+
+    // Add user to MailChimp audience
+    const body = {
+        email_address: req.body.email,
+        status: "subscribed",
+        merge_fields: {
+            FNAME: req.body.name.first,
+            LNAME: req.body.name.last,
+            BIRTHDAY: req.body.DOB.month + '/' + req.body.DOB.day,
+        },
+    };
+
+    const uri = 'https://us19.api.mailchimp.com/3.0/lists/5a18df374b/members';
+    const apikey = Buffer.from(require('../config/config.js').mc.auth || process.env.MC_AUTH).toString('base64');
+
+    axios({
+        method: 'post',
+        url: uri,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + apikey,
+        },
+        data: body,
+    })
+        .then(response => {
+            console.log('Post to MailChimp success!');
+            res.send("Success!");
+        }).catch(err => {
+             console.log(err);
+             console.log(err.response.data.errors[0]);
+            res.send('Error')
+    });
+
 };
 
 module.exports = create;

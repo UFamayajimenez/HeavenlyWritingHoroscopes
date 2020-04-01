@@ -22,7 +22,7 @@ const SignUp = () => {
     const handleSubmit = () => {
         axios.post('/SignUp', data)
             .then(res => {
-                console.log('post request sent');
+                console.log('Signup request sent');
                 console.log(res);
         })
             .catch(err => {
