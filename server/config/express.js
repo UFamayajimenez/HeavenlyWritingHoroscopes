@@ -7,7 +7,7 @@ const path = require('path'),
     cors = require('cors'),
     newUserController = require('../controllers/newUserController.js'),
     passport = require("passport"),
-    users = require("./routes/api/users");
+    users = require("../routes/api/users");
 
 
 module.exports.init = () => {
@@ -49,7 +49,7 @@ module.exports.init = () => {
     app.use(passport.initialize());
 
     // Passport config
-    require("./config/passport")(passport);
+    require("../config/passport")(passport);
 
     // Routes
     app.use("/api/users", users);
