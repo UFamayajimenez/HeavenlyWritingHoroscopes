@@ -105,6 +105,7 @@ router.post("/login", (req, res) => {
     if (!isValid) {
         return res.status(400).json(errors);
     }
+    else console.log('Valid login input');
 
     const email = req.body.email;
     const password = req.body.password;
@@ -142,6 +143,7 @@ router.post("/login", (req, res) => {
                         });
                     }
                 );
+                console.log('correct password');
             } else {
                 return res
                 .status(400)
