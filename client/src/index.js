@@ -7,7 +7,9 @@ import './components/Header/NavBar.css'
 import './views/Home/Home.css'
 import App from './App';
 
+
 ReactDOM.render(
+    
     <Router>
         <App />
     </Router>, document.getElementById('root'));
