@@ -1,12 +1,19 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom'
 
 const DailyReport= (props) => {
 
-    return(
-        <div className="clientBackground">
+    if (sessionStorage.getItem("loggedStatus") == 0){
+        return <Redirect to='/Home' />
+    }
+    else {
+        return(
+            <div className="clientBackground">
+    
+            </div>
+        );
+    }
 
-        </div>
-    );
 }
 
 export default DailyReport;

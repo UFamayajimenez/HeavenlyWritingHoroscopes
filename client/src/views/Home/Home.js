@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
 import './Home.css';
 import {Router, Redirect, withRouter} from 'react-router-dom';
@@ -23,16 +23,14 @@ import NavBar from '../../components/Header/NavBar';
         //}
         //e.preventDefault();
     //}
-      
+
       //commented out by Amaya during merge of authentication w/ adminPage
 
 
         //intialization of form variables
 
 const  Home = (props) => {
-    
-    const [login, setLogin] = useState(0);
-    
+
     const data = {
         email: '',
         password: ''
@@ -43,25 +41,46 @@ const  Home = (props) => {
             .then( res => {
                 console.log("Login was successful!");
                 console.log(res);
-                if (res.data.user.admin){setLogin(2)}
-                else {setLogin(1)};
+
+                if (res.data.user.admin){
+                    sessionStorage.setItem("name", res.data.user.name.first);
+                    sessionStorage.setItem("loggedStatus", 2);
+                    console.log("Logged Status: " + sessionStorage.getItem("loggedStatus"));
+                    window.location.reload();
+                }
+                else {
+                    sessionStorage.setItem("name", res.data.user.name.first);
+                    sessionStorage.setItem("loggedStatus", 1);
+                    console.log("Logged Status: " + sessionStorage.getItem("loggedStatus"));
+                    window.location.reload();
+                };
             })
             .catch ( err => {
+
                 console.log(err);
                 if (err.response.data.email) {console.log(err.response.data.email)};
                 if (err.response.data.password) {console.log(err.response.data.password)};
                 if (err.response.data.emailnotfound) {console.log(err.response.data.emailnotfound)};
                 if (err.response.data.passwordincorrect) {console.log(err.response.data.passwordincorrect)};
+
+                if (err.response){
+                    if (err.response.data.email) {console.log(err.response.data.email)};
+                    if (err.response.data.password) {console.log(err.response.data.password)};
+                    if (err.response.data.emailnotfound) {console.log(err.response.data.emailnotfound)};
+                    if (err.response.data.passwordincorrect) {console.log(err.response.data.passwordincorrect)};
+                }
+                console.log(err.response);
+
                 console.log(err);
             });
         e.preventDefault();
     };
 
-
-    if (login === 1){
+    if (sessionStorage.getItem("loggedStatus") == 1){
         return <Redirect to='/client' />
-    } else if (login === 2){
+    } else if (sessionStorage.getItem("loggedStatus") == 2){
         return <Redirect to='/admin' />
+
     }
 
     return (
@@ -70,7 +89,7 @@ const  Home = (props) => {
             <NavBar/>
 
         </div>
-        
+
         <div className="home">
             <div className="rightSide">
                 <form onSubmit={handleSubmit}>
@@ -104,6 +123,44 @@ const  Home = (props) => {
         </div>
         </div>
     );
+
+    } else{
+        return (
+            <div className="home">
+                <div className="sidenav">
+                    <div className="home-login-main-text">
+                        <h1>Login to your Heavenly Writing account to access your personal horoscope</h1>
+                    </div>
+                </div>
+                <div className="main">
+                    <div className="col-md-6 col-sm-12">
+                        <div className="login-form">
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" className="form-control" placeholder="Email" required
+                                           onChange={e => data.email = e.target.value}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Password</label>
+                                    <input type="password" className="form-control" placeholder="Password" required
+                                           onChange={e => data.password = e.target.value}
+                                    />
+                                </div>
+                                <button type="submit" className="btn btn-primary" onClick={onSubmit}>Login</button>
+                            </form>
+                            <p>
+                                Don't have an account? Sign up <a href="SignUp">here</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        );
+    }
+
 };
 
 export default Home;

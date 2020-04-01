@@ -4,6 +4,7 @@ import UserList from './UserList';
 import './AdminPage.css'
 import { Route, Switch} from 'react-router-dom';
 import Settings from './Settings';
+import { Redirect } from 'react-router-dom';
 import Database from './Database';
 import Overview from './Overview';
 import Statistics from './Statistics';
@@ -12,7 +13,14 @@ import CreateEmail from "./CreateEmail";
 
 const AdminPage = (props) => {
 
-    
+
+
+
+
+    if (sessionStorage.getItem("loggedStatus") != 2){
+        return <Redirect to='/Home' />
+    }
+
 
     return (
         <div className="adminPage">
@@ -25,7 +33,7 @@ const AdminPage = (props) => {
             <div>
                 { <AdminNavBar/> }
             </div>
-            
+
             <Switch>
                 <Route exact path="/admin/users" component={UserList}/>
                 <Route exact path="/admin/database" component={Database}/>

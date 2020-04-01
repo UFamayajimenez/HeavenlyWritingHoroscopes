@@ -1,12 +1,16 @@
+import { Redirect } from 'react-router-dom';
 import React, {useState} from 'react';
 
 const Overview= (props) => {
 
-return(
-    <div className="adminBackground">
+    if (sessionStorage.getItem("loggedStatus") != 2){
+        return <Redirect to='/Home' />
+    }
+    return(
+        <div className="adminBackground">
 
-    </div>
-);
+        </div>
+    );
 }
 
 export default Overview;
