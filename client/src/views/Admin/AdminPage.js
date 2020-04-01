@@ -23,7 +23,7 @@ const AdminPage = (props) => {
                 crossOrigin="anonymous"
             />
             <div>
-                { <AdminNavBar/> }
+                { /*<AdminNavBar/>*/ }
             </div>
             
             <Switch>
