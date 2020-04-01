@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/config.js");
 const axios = require("axios");
 
 
@@ -130,7 +129,8 @@ router.post("/login", (req, res) => {
                 //Sign token
                 jwt.sign(
                     payload,
-                    keys.secretOrKey,
+                    // keys.secretOrKey,
+                    require('../../config/config.js').secretOrKey || process.env.secret,
                     {
                         expiresIn: 31556926     // 1 year in seconds
                     },

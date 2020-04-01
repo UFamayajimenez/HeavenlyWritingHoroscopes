@@ -13,13 +13,13 @@ const App = (props) => {
     // 0: not logged in
     // 1: admin logged in
     // 2: client logged in
-    const [clientState, setClientState] = useState(0);
+    
 
     return (
         <div>
-            <NavBar clientState={clientState}/>
+            
                 <Switch>
-                    <Route exact path="/Home" render={(props) => <Home setClientState={setClientState}/>} />
+                    <Route exact path="/Home" component={Home} />
                     <Route exact path="/SignUp" component={SignUp} />
                     <Route exact path="/">
                         <Redirect to="/Home" />

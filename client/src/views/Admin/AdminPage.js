@@ -12,6 +12,8 @@ import CreateEmail from "./CreateEmail";
 
 const AdminPage = (props) => {
 
+    
+
     return (
         <div className="adminPage">
             <link
