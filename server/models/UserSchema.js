@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+  
     natalSign: {
         type: String
     },
@@ -35,6 +36,8 @@ const userSchema = new mongoose.Schema({
     admin: {
         type: Boolean, required: true
     }
+
+   
     //Check out - https://mongoosejs.com/docs/guide.html
 });
 

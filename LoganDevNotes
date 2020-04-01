@@ -9,5 +9,16 @@ export default{
 };
 
 Replace <password> with the password to MongoDB admin account heavenlywriting.
-Start server from root directory with:
-    nodemon run-script server\server.js
+
+To run and test server:
+    npm run-script server
+    use Postman to test different http requests/responses to/from server
+
+To run and test client:
+    npm run-script client
+    can use React Dev Tools if you have the extension installed
+
+To run and test client + server (frontend and backend connectivity):
+    npm run-script build (this will take a while)
+    npm run-script server
+    Go to localhost:5000 (the server on port 5000 should serve frontend pages)

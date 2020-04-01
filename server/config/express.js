@@ -56,14 +56,14 @@ module.exports.init = () => {
         });
     }
 
-    // app.use(express.static(path.join(__dirname, '../../client/build')));
-    //
-    // app.post('/SignUp', newUserController);
-    //
-    // // Handle React routing, return all requests to React app
-    // app.get('*', function(req, res) {
-    //     res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
-    // });
+    app.use(express.static(path.join(__dirname, '../../client/build')));
+
+    app.post('/SignUp', newUserController);
+
+    // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+        res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+    });
 
 
     return app
