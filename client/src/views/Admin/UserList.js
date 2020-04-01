@@ -54,7 +54,7 @@ const UserList = (props) => {
                                     <th> First Name</th>
                                     <th> Last Name</th>
                                     <th> Date of Birth </th>
-                                    <th> Location of Birth</th>
+                                    <th> Location</th>
                                     <th> E-mail Address</th>
                                     <th> Phone Number</th>
                                     <th> Username</th>

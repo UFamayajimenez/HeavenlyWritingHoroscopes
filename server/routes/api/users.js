@@ -130,7 +130,7 @@ router.post("/login", (req, res) => {
                 jwt.sign(
                     payload,
                     // keys.secretOrKey,
-                    require('../../config/config.js').secretOrKey || process.env.secret,
+                    process.env.secret || require('../../config/config.js').secretOrKey,
                     {
                         expiresIn: 31556926     // 1 year in seconds
                     },
