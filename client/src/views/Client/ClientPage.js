@@ -7,7 +7,9 @@ import './ClientPage.css'
 
 const ClientPage = (props) => {
 
-    console.log(sessionStorage.getItem("loggedStatus"));
+    let client = sessionStorage.getItem("name") || "Greetings";
+    console.log(client);
+
     if (sessionStorage.getItem("loggedStatus") == 0){
         return <Redirect to='/Home' />
     }
@@ -28,6 +30,11 @@ const ClientPage = (props) => {
                     <Route exact path="/client/todays-report" component={DailyReport}/>
                     <Route exact path="/client/settings" component={Settings}/>
                 </Switch>
+                <div className="clientBackground">
+                    <div className="greetingtext">
+                        <h1>Hello, {client} </h1>
+                    </div>
+                </div>
             </div>
         );
     }

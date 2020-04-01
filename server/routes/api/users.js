@@ -74,7 +74,7 @@ router.post("/Signup", (req,res) => {
             };
 
             const uri = 'https://us19.api.mailchimp.com/3.0/lists/5a18df374b/members';
-            const apikey = Buffer.from(require('../../config/config.js').mc.auth || process.env.MC_AUTH).toString('base64');
+            const apikey = Buffer.from(process.env.MC_AUTH || require('../../config/config.js').mc.auth).toString('base64');
 
             axios({
                 method: 'post',
