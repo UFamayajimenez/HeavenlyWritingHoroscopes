@@ -12,6 +12,10 @@ import CreateEmail from "./CreateEmail";
 
 
 const AdminPage = (props) => {
+    
+    let admin = sessionStorage.getItem("name") || "Greetings";
+    console.log(admin);
+
 
     if (sessionStorage.getItem("loggedStatus") != 2){
         return <Redirect to='/Home' />
@@ -37,6 +41,12 @@ const AdminPage = (props) => {
                 <Route exact path="/admin/settings" component={Settings}/>
                 <Route exact path="/admin/create" component={CreateEmail}/>
             </Switch>
+
+            <div className="adminBackground">
+                <div className="greetingtext">
+                    <h1>Hello, {admin} </h1>
+                </div>
+            </div>
         </div>
     );
 }
