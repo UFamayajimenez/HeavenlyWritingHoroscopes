@@ -184,6 +184,10 @@ const SignUp = () => {
                     </div>
                 <div className="submitButton">
                     <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
+                    <p></p>
+                    <p>
+                        Already have an account? Login <a href="Home">here</a>.
+                    </p>
                 </div>
         </form>
             </div>
