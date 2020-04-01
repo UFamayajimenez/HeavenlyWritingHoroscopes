@@ -31,7 +31,7 @@ const SignUp = () => {
                 console.log(res);
                 sessionStorage.setItem("register", 1)
                 console.log("Register status: " + sessionStorage.getItem("register"));
-                window.location.reload();
+                window.location.reload(false);
         })
             .catch(err => {
                 //All possible errors messages are below
