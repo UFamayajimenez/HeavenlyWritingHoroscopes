@@ -47,6 +47,7 @@ const  Home = (props) => {
                 else {setLogin(1)};
             })
             .catch ( err => {
+                console.log(err);
                 if (err.response.data.email) {console.log(err.response.data.email)};
                 if (err.response.data.password) {console.log(err.response.data.password)};
                 if (err.response.data.emailnotfound) {console.log(err.response.data.emailnotfound)};
