@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import './Home.css';
 import {Router, Redirect, withRouter} from 'react-router-dom';
-
+import NavBar from '../../components/Header/NavBar';
 
 
     const handleSubmit = (e) => {
@@ -64,6 +64,12 @@ const  Home = (props) => {
     }
 
     return (
+        <div>
+        <div>
+            <NavBar/>
+
+        </div>
+        
         <div className="home">
             <div className="sidenav">
                 <div className="home-login-main-text">
@@ -95,7 +101,7 @@ const  Home = (props) => {
                 </div>
             </div>
         </div>
-
+        </div>
     );
 };
 
