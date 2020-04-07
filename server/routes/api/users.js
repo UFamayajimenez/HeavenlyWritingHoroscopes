@@ -153,4 +153,13 @@ router.post("/login", (req, res) => {
     });
 });
 
+router.get("/userlist", (req, res) => {
+    
+    User.find({}).exec((err, results)=> {
+        if(err) throw err;
+        res.json(results);
+    })
+        
+});
+
 module.exports = router;

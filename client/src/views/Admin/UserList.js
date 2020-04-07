@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import Table from 'react-bootstrap/Table';
-import {Form, FormControl} from 'react-bootstrap'
+import {Form, FormControl} from 'react-bootstrap';
+import axios from 'axios';
+
 
 const UserList = (props) => {
 
     const [filter, setFilter] = useState(''); 
-
+    const [database, setDatabase] = useState([]);
     
     const filterUpdate = (e) => {
         //set appropriately once the form is figured out
@@ -14,22 +16,49 @@ const UserList = (props) => {
         console.log(e.target.value);
         setFilter(e.target.value);
     }
-    // const userlist = props.data.map( list => {
-    //     return (
-    //         <tr>
-    //             <td></td>
-    //             <td></td>
-    //             <td></td>
-    //             <td></td>
-    //             <td></td>
-    //             <td></td>
-    //             <td></td>
-    //             <td></td>
-    //             <td></td>
-    //         </tr>
-    //     );
-    //     }
-    // );
+    
+    const userlist = (e) => {
+        var things;
+        things = axios.get('/api/users/userlist')
+            .then(res => {
+                console.log(res.data);
+                setDatabase(res.data);
+                return res.data;
+            });
+        
+        const fullList = database.map(user => {
+                if(user.name.first.toLowerCase().includes(filter)){
+                    return(
+                        <tr>
+                            <td>{user.name.first}</td>
+                            <td>{user.name.last}</td>
+                            <td>{user.DOB.month}/{user.DOB.day}/{user.DOB.year}</td>
+                            <td>{user.location.city}, {user.location.state}</td>
+                            <td>{user.email}</td>
+                            <td>{user.number}</td>
+                            <td>Yes</td>
+                            <td>{user.admin ? "Yes" : "No"}</td>
+                        </tr>
+                    );
+                }
+            });
+
+        return fullList;
+
+        // return (
+        //     <tr>
+        //         <td>g</td>
+        //         <td>g</td>
+        //         <td>g</td>
+        //         <td>g</td>
+        //         <td>g</td>
+        //         <td>g</td>
+        //         <td>g</td>
+        //         <td>g</td>
+        //     </tr>
+        // // );
+    };
+
     return(
         <div className="adminBackground">
                 <div className="container row" >
@@ -57,35 +86,12 @@ const UserList = (props) => {
                                     <th> Location</th>
                                     <th> E-mail Address</th>
                                     <th> Phone Number</th>
-                                    <th> Username</th>
-                                    <th> Password</th>
                                     <th> Notification Settings</th>
+                                    <th> Admin</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {/*userlist-->*/}
-                                <tr>
-                                    <td>Sample</td>
-                                    <td>Data</td>
-                                    <td>1/1/1998</td>
-                                    <td>Reno, CA</td>
-                                    <td>hello@yahoo.com</td>
-                                    <td>867-5309</td>
-                                    <td>kitty123</td>
-                                    <td>password123</td>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <td>Other</td>
-                                    <td>Person</td>
-                                    <td>2/3/2010</td>
-                                    <td>Reno, CA</td>
-                                    <td>klondike@gmail.com</td>
-                                    <td>867-5309</td>
-                                    <td>puppy321</td>
-                                    <td>drowssap321</td>
-                                    <td>No</td>
-                                </tr>
+                                {userlist()}
                             </tbody>
                         </Table>
                         
