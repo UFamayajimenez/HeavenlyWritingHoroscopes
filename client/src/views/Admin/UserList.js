@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Table from 'react-bootstrap/Table';
 import {Form, FormControl} from 'react-bootstrap';
 import axios from 'axios';
+import './AdminPage.css'
 
 
 const UserList = (props) => {
@@ -27,7 +28,7 @@ const UserList = (props) => {
             });
         
         const fullList = database.map(user => {
-                if(user.name.first.toLowerCase().includes(filter)){
+                if(user.name.first.toLowerCase().includes(filter) || user.name.last.toLowerCase().includes(filter) ){
                     return(
                         <tr>
                             <td>{user.name.first}</td>
@@ -61,7 +62,7 @@ const UserList = (props) => {
 
     return(
         <div className="adminBackground">
-                <div className="container row" >
+                <div className="datatable-container table-responsive" >
                     <div className="">
                         <h1 align="center" > List of Users </h1>
                     </div>
@@ -77,7 +78,7 @@ const UserList = (props) => {
                         </Form>
                     </div>
                     <div style={{padding: "10px"}}>
-                        <Table striped bordered hover size="sm" variant="dark">
+                        <Table striped bordered size="sm" variant="dark">
                             <thead>
                                 <tr>
                                     <th> First Name</th>
