@@ -32,6 +32,14 @@
     padding: 10px;
     
 }
+
+.greetingtext{
+    text-align: center;
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+
 Form{
     padding:10px;
     

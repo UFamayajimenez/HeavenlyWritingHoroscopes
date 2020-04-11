@@ -1,7 +1,13 @@
+import { Redirect } from 'react-router-dom';
 import React from 'react';
 import './CreateEmail.css';
 
 const  CreateEmail = () => {
+
+    if (sessionStorage.getItem("loggedStatus") != 2){
+        return <Redirect to='/Home' />
+    }
+
     return (
         <div className="createEmail">
             <form>
