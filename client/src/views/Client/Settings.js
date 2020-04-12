@@ -4,7 +4,38 @@ import {Form, FormControl, Button, Row, Col} from 'react-bootstrap';
 
 const Settings= (props) => {
 
+    let usrData = {
+        natalSign: '',
+        name: {first: '', last: ''},
+        DOB: {month: '', day: '', year: ''},
+        location: {
+            city: '',
+            state: '',
+            zip: ''
+        },
+        time: {hour: '00', minute: '00'},
+        email: '',
+        number: '',
+        password: '',
+        password2: '',
+        admin: false
+    };
+
     const handleEmail = (e) => {
+
+        let email = sessionStorage.getItem("email");
+
+        let name = sessionStorage.getItem("name");
+
+
+        console.log(usrData.email);
+
+
+        console.log("yo!!!!");
+
+
+        console.log(name);
+        console.log(email);
 
     }
     const handlePassword = (e) => {
@@ -31,7 +62,8 @@ const Settings= (props) => {
                         <Form>
                             <Row>
                                 <Col>
-                                    <FormControl type="email" placeholder="Enter new email"/>
+                                    <FormControl type="email" placeholder="Enter new email"
+                                                 onChange={e => usrData.email = e.target.value}/>
                                 </Col>
                                 <Col>
                                     <Button 
