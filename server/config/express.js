@@ -7,7 +7,8 @@ const path = require('path'),
     cors = require('cors'),
     newUserController = require('../controllers/newUserController.js'),
     passport = require("passport"),
-    users = require("../routes/api/users");
+    users = require("../routes/api/users"),
+    emails = require("../routes/api/emails.js");
 
 
 module.exports.init = () => {
@@ -53,6 +54,7 @@ module.exports.init = () => {
 
     // Routes
     app.use("/api/users", users);
+    app.use("/api/emails", emails);
 
 
     if (process.env.NODE_ENV === 'production') {
