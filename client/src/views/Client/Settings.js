@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Redirect } from 'react-router-dom'
 import {Form, FormControl, Button, Row, Col} from 'react-bootstrap';
+import axios from "axios";
+
+
 
 const Settings= (props) => {
 
@@ -21,29 +24,47 @@ const Settings= (props) => {
         admin: false
     };
 
+
+    const[email, setEmail] = useState();
+
+
     const handleEmail = (e) => {
 
-        let email = sessionStorage.getItem("email");
 
-        let name = sessionStorage.getItem("name");
-
-
-        console.log(usrData.email);
+        let oldEmail = sessionStorage.email;
+        let newEmail = usrData.email;
 
 
-        console.log("yo!!!!");
+        console.log("old email: " + oldEmail);
+        console.log("new email: " + newEmail);
 
+        usrData.email = oldEmail;
 
-        console.log(name);
-        console.log(email);
+        axios.post('/api/users/changeEmail', usrData)
+            .then(res => {
+                console.log("req was successful!");
+                console.log(res);
+            })
+            .catch(err => {
+                //All possible errors messages are below
+                console.log(err);
+            });
+        e.preventDefault();
 
-    }
+       //connect to db and update object with new email
+
+    };
     const handlePassword = (e) => {
+
+        //connect to db and update object with new password after encrypting new password
 
     }
     const handleNotifications = (e) => {
 
     }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
 
 
     if (sessionStorage.getItem("loggedStatus") == 0){
@@ -59,11 +80,17 @@ const Settings= (props) => {
                         <hr/>
                     </div>
                     <div>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Row>
                                 <Col>
                                     <FormControl type="email" placeholder="Enter new email"
-                                                 onChange={e => usrData.email = e.target.value}/>
+                                                 onChange={e => {
+                                                     if (e.target.value) {
+                                                         const myEmail = e.target.value;
+                                                         usrData.email = myEmail;
+                                                     }
+                                                 }}
+                                    />
                                 </Col>
                                 <Col>
                                     <Button 
