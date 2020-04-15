@@ -42,6 +42,15 @@ const Settings= (props) => {
         admin: false
     };
 
+
+    let passwords = {
+
+        old: '',
+        new1: '',
+        new2: '',
+        email: ''
+    };
+
     const handleEmail = (e) => {
 
 
@@ -62,7 +71,7 @@ const Settings= (props) => {
 
             axios.post('/api/users/getDataForEmail', usrData)
                 .then(res => {
-                    console.log("req was successful!");
+                    console.log("req1 was successful!");
 
                     foundUsrData.natalSign = res.data.user.natalSign;
                     foundUsrData.name.first = res.data.user.name.first;
@@ -100,7 +109,8 @@ const Settings= (props) => {
 
             axios.put('/api/users/changeEmail', emails)
                 .then(res => {
-                    console.log("req was successful! (again)");
+                    console.log("req2 was successful!");
+                    passwords.email = emails.new;
 
                 })
                 .catch(err => {
@@ -114,6 +124,27 @@ const Settings= (props) => {
 
     };
     const handlePassword = (e) => {
+
+        console.log(passwords);
+
+        if(passwords.new1 == passwords.new2){
+
+            passwords.email = sessionStorage.email;
+
+            axios.put('/api/users/changePassword', passwords)
+                .then(res => {
+                    console.log("req3 was successful!");
+
+                })
+                .catch(err => {
+                    //All possible errors messages are below
+                    console.log(err);
+                });
+        }else{
+            //new passwords don't match
+        }
+
+
 
         //connect to db and update object with new password after encrypting new password
 
@@ -164,12 +195,28 @@ const Settings= (props) => {
                     </div>
                     <div>
                     <hr/>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Row>
                                 <Col>
-                                    <FormControl type="password" placeholder="Old Password"/>
-                                    <FormControl type="password" placeholder="New Password"/>
-                                    <FormControl type="password" placeholder="Confirm New Password"/>
+                                    <FormControl type="password" placeholder="Old Password"
+                                                 onChange={e => {
+                                                     if (e.target.value) {
+                                                         const oldPassword = e.target.value;
+                                                         passwords.old = oldPassword;
+                                                     }
+                                                 }}/>
+                                    <FormControl type="password" placeholder="New Password" onChange={e => {
+                                        if (e.target.value) {
+                                            const newPass1 = e.target.value;
+                                            passwords.new1 = newPass1;
+                                        }
+                                    }}/>
+                                    <FormControl type="password" placeholder="Confirm New Password" onChange={e => {
+                                        if (e.target.value) {
+                                            const newPass2 = e.target.value;
+                                            passwords.new2 = newPass2;
+                                        }
+                                    }}/>
                                 </Col>
                                 <Col>
                                     <Button
