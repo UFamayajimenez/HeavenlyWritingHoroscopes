@@ -25,33 +25,92 @@ const Settings= (props) => {
     };
 
 
-    const[email, setEmail] = useState();
-
+    let foundUsrData = {
+        natalSign: '',
+        name: {first: '', last: ''},
+        DOB: {month: '', day: '', year: ''},
+        location: {
+            city: '',
+            state: '',
+            zip: ''
+        },
+        time: {hour: '00', minute: '00'},
+        email: '',
+        number: '',
+        password: '',
+        password2: '',
+        admin: false
+    };
 
     const handleEmail = (e) => {
 
 
-        let oldEmail = sessionStorage.email;
-        let newEmail = usrData.email;
+
+        let emails ={
+
+            old: sessionStorage.email,
+            new: usrData.email
+        };
+
+        usrData.email = emails.old;
 
 
-        console.log("old email: " + oldEmail);
-        console.log("new email: " + newEmail);
+        //grab the user's data from the db and set it to foundUsrData and update the object's email with newEmail
 
-        usrData.email = oldEmail;
 
-        axios.post('/api/users/changeEmail', usrData)
-            .then(res => {
-                console.log("req was successful!");
-                console.log(res);
-            })
-            .catch(err => {
-                //All possible errors messages are below
-                console.log(err);
-            });
-        e.preventDefault();
+        if(emails.old !== emails.new) {
 
-       //connect to db and update object with new email
+            axios.post('/api/users/getDataForEmail', usrData)
+                .then(res => {
+                    console.log("req was successful!");
+
+                    foundUsrData.natalSign = res.data.user.natalSign;
+                    foundUsrData.name.first = res.data.user.name.first;
+                    foundUsrData.name.last = res.data.user.name.last;
+                    foundUsrData.DOB.month = res.data.user.DOB.month;
+                    foundUsrData.DOB.day = res.data.user.DOB.day;
+                    foundUsrData.DOB.year = res.data.user.DOB.year;
+                    foundUsrData.location.city = res.data.user.location.city;
+                    foundUsrData.location.state = res.data.user.location.state;
+                    foundUsrData.location.zip = res.data.user.location.zip;
+                    foundUsrData.time.hour = res.data.user.time.hour;
+                    foundUsrData.time.minute = res.data.user.time.minute;
+                    foundUsrData.email = emails.new;
+                    foundUsrData.number = res.data.user.number;
+                    foundUsrData.password = res.data.user.password;
+                    foundUsrData.password2 = res.data.user.password2;
+                    foundUsrData.admin = false;
+
+                })
+                .catch(err => {
+                    //All possible errors messages are below
+                    console.log(err);
+                });
+
+
+            console.log(foundUsrData);
+
+
+            e.preventDefault();
+
+            //now that we have the user's data + the updated email we now have to log that information back to the db
+
+            console.log(emails);
+
+
+            axios.put('/api/users/changeEmail', emails)
+                .then(res => {
+                    console.log("req was successful! (again)");
+
+                })
+                .catch(err => {
+                    //All possible errors messages are below
+                    console.log(err);
+                });
+        }
+        else{
+            console.log("emails are the same!!")
+        }
 
     };
     const handlePassword = (e) => {

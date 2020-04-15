@@ -154,66 +154,8 @@ router.post("/login", (req, res) => {
     });
 });
 
-router.post("/login", (req, res) => {
-    //Form validation
-    const { errors, isValid } = validateLoginInput(req.body);
 
-    //Check validation
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-    else console.log('Valid login input');
-
-    const email = req.body.email;
-    const password = req.body.password;
-
-    //Find user by email
-    User.findOne({ email }).then(user => {
-        //Check if user exists
-        if (!user) {
-            return res.status(404).json({ emailnotfound: "Email not found" });
-        }
-
-        //Check password
-        bcrypt.compare(password, user.password).then(isMatch => {
-            if (isMatch) {
-                //User matched
-                //Create JWT Payload
-                const payload = {
-                    id: user.id,
-                    name: user.name
-                };
-
-                //Sign token
-                jwt.sign(
-                    payload,
-                    // keys.secretOrKey,
-                    process.env.secret || require('../../config/config.js').secretOrKey,
-                    {
-                        expiresIn: 31556926     // 1 year in seconds
-                    },
-                    (err, token) => {
-                        res.json( {
-                            user: user,
-                            success: true,
-                            token: "Bearer " + token
-                        });
-                    }
-                );
-                console.log('correct password');
-            } else {
-                return res
-                .status(400)
-                .json({ passwordincorrect: "Password incorrect" });
-            }
-        });
-    });
-});
-
-
-router.post("/changeEmail", (req,res) => {
-
-    console.log(req);
+router.post("/getDataForEmail", (req,res) => {
 
     const email = req.body.email;
 
@@ -233,6 +175,21 @@ router.post("/changeEmail", (req,res) => {
 
         });
 
+});
+
+
+router.put("/changeEmail", (req,res) => {
+
+    console.log(req.body);
+
+    const filter = {email: req.body.old};
+    const update = {email: req.body.new};
+
+
+    User.findOneAndUpdate(filter, update, {upsert: true}, function(err, doc) {
+        if (err) return res.send(500, {error: err});
+        return res.send('Succesfully saved.');
+    });
 
 
 });
