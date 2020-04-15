@@ -19,8 +19,8 @@ const UserList = (props) => {
     }
     
     const userlist = (e) => {
-        var things;
-        things = axios.get('/api/users/userlist')
+        
+        axios.get('/api/users/userlist')
             .then(res => {
                 console.log(res.data);
                 setDatabase(res.data);
@@ -28,6 +28,11 @@ const UserList = (props) => {
             });
         
         const fullList = database.map(user => {
+                if(user.name.first == null) {
+                    return(
+                        <tr></tr>
+                    );
+                }
                 if(user.name.first.toLowerCase().includes(filter) || user.name.last.toLowerCase().includes(filter) ){
                     return(
                         <tr>
@@ -45,19 +50,6 @@ const UserList = (props) => {
             });
 
         return fullList;
-
-        // return (
-        //     <tr>
-        //         <td>g</td>
-        //         <td>g</td>
-        //         <td>g</td>
-        //         <td>g</td>
-        //         <td>g</td>
-        //         <td>g</td>
-        //         <td>g</td>
-        //         <td>g</td>
-        //     </tr>
-        // // );
     };
 
     return(
