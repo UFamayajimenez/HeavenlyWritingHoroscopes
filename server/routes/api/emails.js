@@ -1,7 +1,9 @@
-const express = require('express'),
-    EmailModel = require('../../models/EmailSchema.js');
+const express = require('express')
+
+const EmailModel = require('../../models/EmailSchema.js');
 
 const router = express.Router();
+const axios = require("axios");
 
 router.post("/create", (req, res) => {
     console.log(req.body);

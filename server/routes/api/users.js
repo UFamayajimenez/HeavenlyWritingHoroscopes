@@ -12,6 +12,8 @@ const validateLoginInput = require("../../validation/login");
 //Load User model
 const User = require("../../models/UserSchema");
 
+const Email = require("../../models/EmailSchema");
+
 router.post("/Signup", (req,res) => {
     //Form validation
     const {errors, isValid } = validateRegisterInput(req.body);
@@ -156,6 +158,15 @@ router.post("/login", (req, res) => {
 router.get("/userlist", (req, res) => {
     
     User.find({}).exec((err, results)=> {
+        if(err) throw err;
+        res.json(results);
+    })
+        
+});
+
+router.get("/emaillist", (req, res) => {
+    
+    Email.find({}).exec((err, results)=> {
         if(err) throw err;
         res.json(results);
     })

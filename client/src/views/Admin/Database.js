@@ -8,21 +8,36 @@ const Database= (props) => {
     const [emails, setEmails] = useState([]);
 
     const ListEmails = () => {
-        //CHANGE THIS GET REQUEST URL, THIS IS TEMPORARY INFO FOR TESTING
-        axios.get('/api/users/userlist')
+        axios.get('/api/users/emaillist')
             .then(res => {
                 console.log(res.data);
                 setEmails(res.data);
                 return res.data;
             });
 
-        const allEmails = emails.map(email => {
-            // CHANGE ALL OF THIS INFO TOO, PURELY FOR TESTING!!
-            
+        if(emails == null) {
             return(
-                
-                <EmailHistory recipient={email.name.first} date={email.DOB.month} message={email.email}/>
-            )
+                <EmailHistory recipient={"no one!"}  
+                                moonphase={"Unknown"} 
+                                moonsign={"Unknown"}
+                                message={"No emails have been sent yet"}/>
+            );
+        }
+        const allEmails = emails.map(email => {
+            
+            if(email.audience.natalSign == null) { 
+                return(
+                    <div></div>
+                );
+            }
+ 
+            return(
+                <EmailHistory recipient={email.audience.natalSign} 
+                                moonphase={email.audience.moonPhase} 
+                                moonsign={email.audience.moonSign} 
+                                message={email.content}                 
+                />
+            );
 
         });
 
