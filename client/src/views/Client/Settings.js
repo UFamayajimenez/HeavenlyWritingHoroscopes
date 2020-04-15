@@ -240,20 +240,11 @@ const Settings= (props) => {
                         <Form>
                             <Form.Check
                                 type="checkbox"
-                                label="I would like to receive notifications on my phone"
-                                className="checkboxes"
-                                />
-                            <Form.Check
-                                type="checkbox"
-                                label="I would like to receive notifications on my calendar"
-                                className="checkboxes"
-                                />
-                            <Form.Check
-                                type="checkbox"
-                                label="I would like to unsubscribe from all notifications"
+                                label="I would like to unsubscribe from all emails"
                                 className="checkboxes"
                                 />
                             <Button
+                                style={{margin: "20px"}}
                                 variant="primary"
                                 type="submit"
                                 onClick={handleNotifications}>
