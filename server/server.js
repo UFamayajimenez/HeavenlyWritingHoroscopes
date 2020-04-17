@@ -1,5 +1,7 @@
 const express = require('./config/express.js'),
-    EmailModel = require('./models/EmailSchema.js');
+    EmailModel = require('./models/EmailSchema.js'),
+    axios = require('axios'),
+    sendEmailScript = require('./sendEmail.js');
 
 const app = express.init();
 
@@ -7,17 +9,7 @@ const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server now running on port ` + port + '!'));
 
-// EmailModel.find((err, docs) => {
-//     if (err) console.log(err);
-//     else console.log(docs)
-// });
-// EmailModel.findOne({audience:{natalSign: 'Cancer', moonPhase: '6', moonSign: 'Sagittarius'}}, (err, doc) => {
-//     if (err) console.log(err);
-//     else if (doc) console.log(doc);
-//     else console.log('Not found');
-// });
-
-
+// setInterval(sendEmailScript, 180000);
 
 
 // const express = require("express");
