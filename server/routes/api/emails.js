@@ -140,13 +140,13 @@ router.post("/create", (req, res) => {
         req.body.cid = newID;
         EmailModel.findOne({audience: {natalSign: req.body.audience.natalSign, moonPhase: req.body.audience.moonPhase, moonSign: req.body.audience.moonSign}}, (err, email) => {
             if (err) console.log(err);
-            else if (email){
+            else if (email) {
                 email.overwrite(req.body).save(() => {
                     console.log('Existing email overwritten.');
                     res.send('Successfully saved to MongoDB');
                 });
             }
-            else{
+            else {
                 EmailModel.create(req.body, (err, newEmail) => {
                     if (err) console.log(err);
                     else {
