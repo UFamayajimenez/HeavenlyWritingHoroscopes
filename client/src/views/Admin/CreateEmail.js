@@ -19,7 +19,6 @@ const  CreateEmail = () => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
         axios.post("/api/emails/create", data)
             .then(res => {
                 console.log('Email creation success!');

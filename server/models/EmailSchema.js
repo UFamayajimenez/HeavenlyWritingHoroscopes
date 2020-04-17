@@ -7,7 +7,8 @@ const emailSchema = new mongoose.Schema({
         moonSign: {type: String},
         type: JSON, required: true
     },
-    content: {type: String, required: true}
+    content: {type: String, required: true},
+    cid: {type: String, required: true}
 });
 
 module.exports = mongoose.model('email', emailSchema);
