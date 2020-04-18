@@ -10,67 +10,69 @@ const getInfo = function(req, res){
         if (!user) {
             return res.status(404).json({ emailnotfound: "Email not found" });
         }
-        const date = {year: parseInt(user.DOB.year), month: parseInt(user.DOB.month), day: parseInt(user.DOB.day), hour: parseInt(user.time.hour) + 5, minute: parseInt(user.time.minute)};
-        var julday = swisseph.swe_julday(date.year, date.month, date.day, date.hour, date.minute, swisseph.SE_GREG_CAL);
+        //currently julday doesn't give correct info
+        const date = {year: parseInt(user.DOB.year), month: parseInt(user.DOB.month), day: parseInt(user.DOB.day), hour: parseInt(user.time.hour) + 5};
+        var julday = swisseph.swe_julday(date.year, date.month, date.day, date.hour, swisseph.SE_GREG_CAL);
         console.log(julday);
         swisseph.swe_houses(julday, 29.65, -82.33, 'W', function(houses){
             console.log('Houses ', houses);
-            if(0 <= houses.ascendant < 30){
+            console.log('ascendant: ', houses.ascendant);
+            if(0 <= +houses.ascendant & +houses.ascendant < 30){
                 user.overwrite({natalSign: 'Aries'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
             }
-            else if(30 <= houses.ascendant < 60){
+            else if(30 <= +houses.ascendant & +houses.ascendant < 60){
                 user.overwrite({natalSign: 'Taurus'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
             }
-            else if(60 <= houses.ascendant < 90){
+            else if(60 <= +houses.ascendant & +houses.ascendant  < 90){
                 user.overwrite({natalSign: 'Gemini'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
             }
-            else if(90 <= houses.ascendant < 120){
+            else if(90 <= +houses.ascendant & +houses.ascendant  < 120){
                 user.overwrite({natalSign: 'Cancer'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
             }
-            else if(120 <= houses.ascendant < 150){
+            else if(120 <= +houses.ascendant & +houses.ascendant  < 150){
                 user.overwrite({natalSign: 'Leo'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
             }
-            else if(150 <= houses.ascendant < 180){
+            else if(150 <= +houses.ascendant & +houses.ascendant  < 180){
                 user.overwrite({natalSign: 'Virgo'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
             }
-            else if(180 <= houses.ascendant < 210){
+            else if(180 <= +houses.ascendant & +houses.ascendant  < 210){
                 user.overwrite({natalSign: 'Libra'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
             }
-            else if(210 <= houses.ascendant < 240){
+            else if(210 <= +houses.ascendant & +houses.ascendant  < 240){
                 user.overwrite({natalSign: 'Scorpio'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
             }
-            else if(240 <= houses.ascendant < 270){
+            else if(240 <= +houses.ascendant & +houses.ascendant  < 270){
                 user.overwrite({natalSign: 'Sagittarius'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
             }
-            else if(270 <= houses.ascendant < 300){
+            else if(270 <= +houses.ascendant & +houses.ascendant  < 300){
                 user.overwrite({natalSign: 'Capricorn'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
             }
-            else if(300 <= houses.ascendant < 330){
+            else if(300 <= +houses.ascendant & +houses.ascendant  < 330){
                 user.overwrite({natalSign: 'Aquarius'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
             }
-            else if(330 <= houses.ascendant < 360){
+            else if(330 <= +houses.ascendant & +houses.ascendant  < 360){
                 user.overwrite({natalSign: 'Pisces'}).save(() => {
                     console.log("user is ", user.natalSign);
                 });
