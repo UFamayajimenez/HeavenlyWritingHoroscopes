@@ -113,9 +113,9 @@ const createCampaign = (data, callback) => {
                 },
                 data: {
                     template: {
-                        id: 149623,
+                        id: 149807,
                         sections: {
-                            header: 'Ascendant in ' + data.audience.natalSign + ' with ' + phase + ' Moon in ' + data.audience.moonSign,
+                            // header: 'Ascendant in ' + data.audience.natalSign + ' with ' + phase + ' Moon in ' + data.audience.moonSign,
                             body: data.content
                         }
                     }
