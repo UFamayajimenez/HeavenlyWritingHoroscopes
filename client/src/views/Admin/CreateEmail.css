@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 .createEmail{
 
 }
 
+=======
+>>>>>>> newEph
 body {
     font-family: "Lato", sans-serif;
 }
@@ -17,6 +20,7 @@ body {
     background: white;
 
     padding-left: 30px;
+<<<<<<< HEAD
     padding-right: 30px;
 
 
@@ -28,6 +32,17 @@ body {
 .form-group{
     padding-bottom: 30px;
 }
+=======
+    padding-right: 60px;
+
+
+    width: 600px;
+    height: 800px;
+
+}
+
+
+>>>>>>> newEph
 
 .form{
     padding-top: 10px;
@@ -46,7 +61,11 @@ body {
 
     width: 840px;
 
+<<<<<<< HEAD
     height: 700px;
+=======
+    height: 800px;
+>>>>>>> newEph
 
     padding-right: 20px;
     padding-left: 20px;

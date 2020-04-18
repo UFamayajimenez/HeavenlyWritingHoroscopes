@@ -50,6 +50,10 @@ const  Home = (props) => {
                 }
                 else {
                     sessionStorage.setItem("name", res.data.user.name.first);
+<<<<<<< HEAD
+=======
+                    sessionStorage.setItem("email", res.data.user.email);
+>>>>>>> newEph
                     sessionStorage.setItem("loggedStatus", 1);
                     console.log("Logged Status: " + sessionStorage.getItem("loggedStatus"));
                     window.location.reload();

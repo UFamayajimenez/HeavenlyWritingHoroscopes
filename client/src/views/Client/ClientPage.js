@@ -8,7 +8,11 @@ import './ClientPage.css'
 const ClientPage = (props) => {
 
     let client = sessionStorage.getItem("name") || "Greetings";
+<<<<<<< HEAD
     console.log(client);
+=======
+    //console.log(client);
+>>>>>>> newEph
 
     if (sessionStorage.getItem("loggedStatus") == 0){
         return <Redirect to='/Home' />
