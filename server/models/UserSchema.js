@@ -35,6 +35,9 @@ const userSchema = new mongoose.Schema({
     },
     admin: {
         type: Boolean, required: true
+    },
+    hash: {
+        type: String, required: true
     }
 
    

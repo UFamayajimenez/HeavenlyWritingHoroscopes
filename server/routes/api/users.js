@@ -51,17 +51,6 @@ router.post("/Signup", (req,res) => {
                 admin: req.body.admin
             });
 
-            //Hash password before saving in database
-            bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newUser.password, salt, (err, hash) => {
-                    if (err) throw err;
-                    newUser.password = hash;
-                    newUser.save()
-                    .then(user => console.log(user))
-                    .catch(err => console.log(err));
-                });
-            });
-
             // Add user to MailChimp audience
             const body = {
                 email_address: req.body.email,
@@ -88,10 +77,22 @@ router.post("/Signup", (req,res) => {
                 .then(response => {
                     console.log('Post to MailChimp success!');
                     res.send("Success!");
+                    newUser.hash = response.data.id;
+
+                    //Hash password before saving in database
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(newUser.password, salt, (err, hash) => {
+                            if (err) throw err;
+                            newUser.password = hash;
+                            newUser.save()
+                                .then(user => console.log(user))
+                                .catch(err => console.log(err));
+                        });
+                    });
                 }).catch(err => {
-                console.log(err);
-                console.log(err.response.data.errors[0]);
-                res.send('Error')
+                    console.log('Mailchimp subscribe post failed.');
+                    console.log(err.response.data);
+                    res.send('Error')
             });
         }
     });
@@ -249,6 +250,32 @@ router.put("/changePassword", (req,res) => {
 
 
 
+});
+
+router.patch("/unsubscribe", (req, res) => {
+    User.findOne({email: req.body.email}, (err, doc) => {
+        if (err) console.log(err);
+        else{
+            const apikey = Buffer.from(process.env.MC_AUTH || require('../../config/config.js').mc.auth).toString('base64');
+
+            axios({
+                method: 'patch',
+                url: 'https://us19.api.mailchimp.com/3.0/lists/5a18df374b/members/' + doc.hash,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ' + apikey,
+                },
+                data: {
+                    status: 'unsubscribed'
+                }
+            })
+                .then(response => {
+                    console.log(doc.email + ' has unsubscribed.');
+                    res.send('Unsubscribe successful');
+                })
+                .catch(err => console.log(err.response.data))
+            }
+    })
 });
 
 module.exports = router;

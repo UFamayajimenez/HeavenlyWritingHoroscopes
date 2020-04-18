@@ -6,6 +6,7 @@ import axios from "axios";
 
 
 const Settings= (props) => {
+    let unsubscribe = false;
 
     let usrData = {
         natalSign: '',
@@ -150,8 +151,13 @@ const Settings= (props) => {
 
     }
     const handleNotifications = (e) => {
+        if (unsubscribe){
 
-    }
+            axios.patch('/api/users/unsubscribe', {email: sessionStorage.email})
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+        }
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
     };
@@ -242,6 +248,8 @@ const Settings= (props) => {
                                 type="checkbox"
                                 label="I would like to unsubscribe from all emails"
                                 className="checkboxes"
+                                value="unsubscribe"
+                                onChange={e => unsubscribe=!unsubscribe}
                                 />
                             <Button
                                 style={{margin: "20px"}}
