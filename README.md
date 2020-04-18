@@ -62,9 +62,22 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - #### `routes` - This holds all of our HTTP to URL path associations for each unique url
 - #### `tests` - This holds all of our server tests that we have defined
 - #### `server.js` - Defines npm behaviors and packages for the client
+- #### `validation` - This holds all of our validation functions and registering a new user
 #### `package.json` - Defines npm behaviors like the scripts defined in the next section of the README
 #### `.gitignore` - Tells git which files to ignore
 #### `README` - This file!
+
+## List of API with Keys
+
+### Mailchimp API Key
+
+- #### `config.js` - Within the config file, insert the following lines of code:
+    <cod> mc: {
+        auth: 'apikey:aacda47e33f21c6b122555a448bd3a0d-us19',
+    }
+    </code>
+
+### 
 
 ## Learn More
 To learn how to setup a local MongoDB instance for testing, check out how to [connect to MongoDB](https://docs.mongodb.com/guides/server/drivers/).
