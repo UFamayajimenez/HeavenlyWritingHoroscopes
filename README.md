@@ -72,12 +72,21 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### Mailchimp API Key
 
 - #### `config.js` - Within the config file, insert the following lines of code:
-    <cod> mc: {
+    <code> mc: {
         auth: 'apikey:aacda47e33f21c6b122555a448bd3a0d-us19',
     }
     </code>
 
-### 
+## Environment Variables
+When working directly with the Heroky deployment, the following Config Vars are added for proper functionality:
+- #### `DB_URI` - mongodb+srv://heavenlywriting:DakotaFanClub@cluster0-u13yq.mongodb.net/test?retryWrites=true&w=majority
+- #### `MC_AUTH` - apikey:aacda47e33f21c6b122555a448bd3a0d-us19
+- #### `secret` - secret
+
+## Log-In Credentials
+
+- #### `admin e-mail` - heavenlywriting2020@gmail.com
+- #### `admin password` - DakotaFanClub
 
 ## Learn More
 To learn how to setup a local MongoDB instance for testing, check out how to [connect to MongoDB](https://docs.mongodb.com/guides/server/drivers/).
