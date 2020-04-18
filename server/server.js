@@ -1,7 +1,7 @@
 const express = require('./config/express.js'),
     EmailModel = require('./models/EmailSchema.js'),
     axios = require('axios'),
-    sendEmailScript = require('./sendEmail.js');
+    sendEmailScript = require('./modules/sendEmail.js');
 
 const app = express.init();
 
