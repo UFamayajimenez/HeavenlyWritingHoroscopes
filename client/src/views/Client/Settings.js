@@ -205,29 +205,35 @@ const Settings= (props) => {
                             <Row>
                                 <Col>
                                     <FormControl type="password" placeholder="Old Password"
-                                                 onChange={e => {
+                                                style={{margin: "10px"}}
+                                                onChange={e => {
                                                      if (e.target.value) {
                                                          const oldPassword = e.target.value;
                                                          passwords.old = oldPassword;
                                                      }
                                                  }}/>
-                                    <FormControl type="password" placeholder="New Password" onChange={e => {
-                                        if (e.target.value) {
-                                            const newPass1 = e.target.value;
-                                            passwords.new1 = newPass1;
-                                        }
-                                    }}/>
-                                    <FormControl type="password" placeholder="Confirm New Password" onChange={e => {
-                                        if (e.target.value) {
-                                            const newPass2 = e.target.value;
-                                            passwords.new2 = newPass2;
-                                        }
-                                    }}/>
+                                    <FormControl type="password" placeholder="New Password" 
+                                                style={{margin: "10px"}}
+                                                onChange={e => {
+                                                    if (e.target.value) {
+                                                        const newPass1 = e.target.value;
+                                                        passwords.new1 = newPass1;
+                                                    }
+                                                }}/>
+                                    <FormControl type="password" placeholder="Confirm New Password" 
+                                                style={{margin: "10px"}}
+                                                onChange={e => {
+                                                    if (e.target.value) {
+                                                        const newPass2 = e.target.value;
+                                                        passwords.new2 = newPass2;
+                                                    }
+                                                }}/>
                                 </Col>
                                 <Col>
                                     <Button
                                         variant="primary"
                                         type="submit"
+                                        style={{margin: "10px"}}
                                         onClick={handlePassword}>
                                         Confirm New Password
                                     </Button>
