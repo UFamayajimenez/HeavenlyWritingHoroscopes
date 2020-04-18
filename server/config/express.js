@@ -5,8 +5,9 @@ const path = require('path'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/examples.server.routes'),
     cors = require('cors'),
-    newUserController = require('../controllers/newUserController.js');
-    newHoroscopeController = require('../controllers/newHoroscopeController.js');
+    newUserController = require('../controllers/newUserController.js'),
+    passport = require("passport"),
+    users = require("../routes/api/users");
 
 
 module.exports.init = () => {
@@ -30,6 +31,11 @@ module.exports.init = () => {
     app.use(morgan('dev'));
 
     // body parsing middleware
+    app.use(
+        bodyParser.urlencoded({
+            extended: false
+        })
+    );
     app.use(bodyParser.json());
 
     app.use(cors());
@@ -37,15 +43,23 @@ module.exports.init = () => {
     // add a router
     // app.use('/api/example', exampleRouter);
 
-    app.post('/SignUp', newUserController);
-    app.post('/Horoscope', newHoroscopeController);
+    // app.post('/SignUp', newUserController);
+
+    //Passport middleware
+    app.use(passport.initialize());
+
+    // Passport config
+    require("../config/passport")(passport);
+
+    // Routes
+    app.use("/api/users", users);
+
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
         app.use(express.static(path.join(__dirname, '../../client/build')));
 
         app.post('/SignUp', newUserController);
-        app.post('/Horoscope', newHoroscopeController);
 
         // Handle React routing, return all requests to React app
         app.get('*', function(req, res) {
@@ -54,8 +68,6 @@ module.exports.init = () => {
     }
 
     app.use(express.static(path.join(__dirname, '../../client/build')));
-
-    app.post('/SignUp', newUserController);
 
     // Handle React routing, return all requests to React app
     app.get('*', function(req, res) {

@@ -1,0 +1,74 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #483475 !important;
+}
+
+
+.userCombinationContainer{
+
+    padding-top: 20px;
+    background: white;
+
+    padding-left: 30px;
+    padding-right: 60px;
+
+
+    width: 600px;
+    height: 800px;
+
+}
+
+
+
+.form{
+    padding-top: 10px;
+    text-align: left;
+}
+
+.submitButton{
+    text-align: center;
+}
+
+.emailTextInputContainer{
+    padding-top: 100px;
+    float: right;
+
+    background-image: url('../../assets/heavenlyWritingBkrnd3.jpg');
+
+    width: 840px;
+
+    height: 800px;
+
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.textInput{
+    background: white;
+    border: 2px solid;
+    border-radius: 25px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    height: 500px;
+
+}
+
+.textBox{
+    padding-top: 20px;
+    height: 300px;
+}
+
+.exampleFormControlTextarea1{
+    height: 300px;
+}
+
+
+textarea {
+
+
+}

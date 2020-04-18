@@ -1,0 +1,49 @@
+.clientBackground{
+    background-image: url('../Admin/stars.jpeg');
+    padding-bottom: 282px;
+    padding-top: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.bigContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.container{
+    height: 400px;
+    width: 300px;
+    background: white;
+    border-radius: 30px;
+    border-color: black;
+    display: flex;
+    flex-direction: column;
+}
+.headers{
+    padding-bottom: 20px;
+}
+
+.clientPage{
+    color:black;
+    text-align: center;
+}
+.checkboxes{
+    padding: 10px;
+    
+}
+
+.greetingtext{
+    text-align: center;
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+
+Form{
+    padding:10px;
+    
+}
+FormControl{
+    padding:10px;
+}
