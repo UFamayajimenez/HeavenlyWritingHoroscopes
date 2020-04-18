@@ -30,8 +30,6 @@ const getInfo = function(req, res){
             res.send("Not successful!");
         }
     });
-
-
-}
+};
 
 module.exports = getInfo;
