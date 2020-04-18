@@ -7,12 +7,8 @@ const path = require('path'),
     cors = require('cors'),
     newUserController = require('../controllers/newUserController.js'),
     passport = require("passport"),
-<<<<<<< HEAD
     users = require("../routes/api/users"),
     emails = require("../routes/api/emails.js");
-=======
-    users = require("../routes/api/users");
->>>>>>> newEph
 
 
 module.exports.init = () => {
@@ -58,10 +54,7 @@ module.exports.init = () => {
 
     // Routes
     app.use("/api/users", users);
-<<<<<<< HEAD
     app.use("/api/emails", emails);
-=======
->>>>>>> newEph
 
 
     if (process.env.NODE_ENV === 'production') {

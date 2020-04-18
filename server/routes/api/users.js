@@ -97,10 +97,6 @@ router.post("/Signup", (req,res) => {
     });
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> newEph
 router.post("/login", (req, res) => {
     //Form validation
     const { errors, isValid } = validateLoginInput(req.body);
@@ -150,116 +146,11 @@ router.post("/login", (req, res) => {
                 console.log('correct password');
             } else {
                 return res
-<<<<<<< HEAD
                 .status(400)
                 .json({ passwordincorrect: "Password incorrect" });
-=======
-                    .status(400)
-                    .json({ passwordincorrect: "Password incorrect" });
->>>>>>> newEph
             }
         });
     });
 });
 
-<<<<<<< HEAD
-=======
-
-router.post("/getDataForEmail", (req,res) => {
-
-    const email = req.body.email;
-
-
-    User.findOne({ email }).then(user => {
-        //Check if user exists
-        if (!user) {
-            return res.status(404).json({ emailnotfound: "Email not found" });
-        }else{
-
-            res.json( {
-                user: user,
-            });
-
-        }
-
-
-        });
-
-});
-
-
-router.put("/changeEmail", (req,res) => {
-
-    const filter = {email: req.body.old};
-    const update = {email: req.body.new};
-
-
-    User.findOneAndUpdate(filter, update, {upsert: true}, function(err, doc) {
-        if (err) return res.send(500, {error: err});
-        return res.send('Succesfully saved.');
-    });
-
-
-});
-
-
-
-router.put("/changePassword", (req,res) => {
-
-    const email = req.body.email;
-
-
-    User.findOne({ email }).then(user => {
-        //Check if user exists
-        if (!user) {
-            return res.status(404).json({ emailnotfound: "Email not found" });
-        }
-
-        bcrypt.compare(req.body.old, user.password).then(isMatch => {
-            if(isMatch){
-
-
-                const filter = {email: req.body.email};
-
-                //encrypt new password
-
-                bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(req.body.new1, salt, (err, hash) => {
-                        if (err) throw err;
-
-                        if(hash === user.password){
-                            console.log("sumn wrong")
-                        }
-
-                        //change password in database
-
-                        const update = {password: hash};
-
-
-                        User.findOneAndUpdate(filter, update, {upsert: true}, function(err, doc) {
-                            if (err) return res.send(500, {error: err});
-                            return res.send('Succesfully saved.');
-                        });
-
-                    });
-                });
-
-
-            }else{
-                console.log("passwords do not match")
-            }
-
-        });
-
-
-    });
-
-
-
-
-
-
-});
-
->>>>>>> newEph
 module.exports = router;
