@@ -67,6 +67,22 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 #### `.gitignore` - Tells git which files to ignore
 #### `README` - This file!
 
+## Config File
+
+<code>
+    const config = {
+        db: {
+            uri: 'mongodb+srv://heavenlywriting:DakotaFanClub@cluster0-u13yq.mongodb.net/test?retryWrites=true&w=majority',             //place the URI of your mongo database here.
+        },
+        port: 5000,
+        secretOrKey: "secret",
+        mc: {
+            auth: 'apikey:aacda47e33f21c6b122555a448bd3a0d-us19',
+        }
+    };
+    module.exports = config;
+</code>
+
 ## List of API with Keys
 
 ### Mailchimp API Key
