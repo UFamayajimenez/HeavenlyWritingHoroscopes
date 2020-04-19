@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const axios = require("axios");
+const risingSign = require('../../controllers/newHoroscopeController.js');
 
 
 //Load input validation
@@ -51,48 +52,90 @@ router.post("/Signup", (req,res) => {
                 admin: req.body.admin
             });
 
-            // Add user to MailChimp audience
-            const body = {
-                email_address: req.body.email,
-                status: "subscribed",
-                merge_fields: {
-                    FNAME: req.body.name.first,
-                    LNAME: req.body.name.last,
-                    BIRTHDAY: req.body.DOB.month + '/' + req.body.DOB.day,
-                },
-            };
-
-            const uri = 'https://us19.api.mailchimp.com/3.0/lists/5a18df374b/members';
             const apikey = Buffer.from(process.env.MC_AUTH || require('../../config/config.js').mc.auth).toString('base64');
 
-            axios({
-                method: 'post',
-                url: uri,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Basic ' + apikey,
-                },
-                data: body,
-            })
-                .then(response => {
-                    console.log('Post to MailChimp success!');
-                    res.send("Success!");
-                    newUser.hash = response.data.id;
+            // Calculate user rising sign
+            risingSign(req, res, (natalSign) => {
+                newUser.natalSign = natalSign;
+                // let tag = 0;
+                // switch (natalSign) {
+                //     case 'Aries':
+                //         tag = 287715;
+                //         break;
+                //     case 'Taurus':
+                //         tag = 287719;
+                //         break;
+                //     case 'Gemini':
+                //         tag = 287723;
+                //         break;
+                //     case 'Cancer':
+                //         tag = 287727;
+                //         break;
+                //     case 'Leo':
+                //         tag = 287731;
+                //         break;
+                //     case 'Virgo':
+                //         tag = 287735;
+                //         break;
+                //     case 'Libra':
+                //         tag = 287739;
+                //         break;
+                //     case 'Scorpio':
+                //         tag = 287743;
+                //         break;
+                //     case 'Sagittarius':
+                //         tag = 287747;
+                //         break;
+                //     case 'Capricorn':
+                //         tag = 287751;
+                //         break;
+                //     case 'Aquarius':
+                //         tag = 287755;
+                //         break;
+                //     case 'Pisces':
+                //         tag = 287759;
+                //         break;
+                // }
 
-                    //Hash password before saving in database
-                    bcrypt.genSalt(10, (err, salt) => {
-                        bcrypt.hash(newUser.password, salt, (err, hash) => {
-                            if (err) throw err;
-                            newUser.password = hash;
-                            newUser.save()
-                                .then(user => console.log(user))
-                                .catch(err => console.log(err));
+                // Add user to Mailchimp audience
+                axios({
+                    method: 'post',
+                    url: 'https://us19.api.mailchimp.com/3.0/lists/5a18df374b/members',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Basic ' + apikey,
+                    },
+                    data: {
+                        email_address: req.body.email,
+                        status: "subscribed",
+                        merge_fields: {
+                            FNAME: req.body.name.first,
+                            LNAME: req.body.name.last,
+                            BIRTHDAY: req.body.DOB.month + '/' + req.body.DOB.day,
+                        },
+                        tags: [natalSign]
+                    },
+                })
+                    .then(response => {
+                        console.log('Post to MailChimp success!');
+                        res.send("Success!");
+                        newUser.hash = response.data.id;
+
+                        //Hash password before saving in database
+                        bcrypt.genSalt(10, (err, salt) => {
+                            bcrypt.hash(newUser.password, salt, (err, hash) => {
+                                if (err) throw err;
+                                newUser.password = hash;
+                                newUser.save()
+                                    .then(user => console.log(user))
+                                    .catch(err => console.log(err));
+                            });
                         });
-                    });
-                }).catch(err => {
+                    }).catch(err => {
                     console.log('Mailchimp subscribe post failed.');
                     console.log(err.response.data);
                     res.send('Error')
+                });
             });
         }
     });
