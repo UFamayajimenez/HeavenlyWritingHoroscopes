@@ -42,11 +42,6 @@ module.exports.init = () => {
 
     app.use(cors());
 
-    // add a router
-    // app.use('/api/example', exampleRouter);
-
-    // app.post('/SignUp', newUserController);
-
     //Passport middleware
     app.use(passport.initialize());
 
@@ -58,6 +53,7 @@ module.exports.init = () => {
     app.use("/api/emails", emails);
 
     app.post('/Horoscope', newHoroscopeController);
+
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
         app.use(express.static(path.join(__dirname, '../../client/build')));
