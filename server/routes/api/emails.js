@@ -5,7 +5,6 @@ const express = require('express'),
 const router = express.Router();
 
 
-//TODO: Maybe pass function to create mongoose model to createCampaign, or use promises?
 const createCampaign = (data, callback) => {
     const apikey = Buffer.from(process.env.MC_AUTH || require('../../config/config.js').mc.auth).toString('base64');
     let tag = 0;
