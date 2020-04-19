@@ -41,11 +41,6 @@ module.exports.init = () => {
 
     app.use(cors());
 
-    // add a router
-    // app.use('/api/example', exampleRouter);
-
-    // app.post('/SignUp', newUserController);
-
     //Passport middleware
     app.use(passport.initialize());
 

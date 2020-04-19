@@ -8,7 +8,7 @@ import './ClientPage.css'
 const ClientPage = (props) => {
 
     let client = sessionStorage.getItem("name") || "Greetings";
-    console.log(client);
+    //console.log(client);
 
     if (sessionStorage.getItem("loggedStatus") == 0){
         return <Redirect to='/Home' />
@@ -25,7 +25,7 @@ const ClientPage = (props) => {
                 <div>
                     { <ClientNavBar/> }
                 </div>
-                
+
                 <Switch>
                     <Route exact path="/client/todays-report" component={DailyReport}/>
                     <Route exact path="/client/settings" component={Settings}/>
@@ -38,7 +38,7 @@ const ClientPage = (props) => {
             </div>
         );
     }
-    
+
 }
 
 export default ClientPage;
