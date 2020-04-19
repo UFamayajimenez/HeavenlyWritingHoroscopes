@@ -2,6 +2,7 @@ var UserSchema = require('../models/UserSchema.js');
 var swisseph = require('swisseph');
 var opencage = require('opencage-api-client');
 var config = require('../config/config.js');
+var timeZoneSupport = require('timezone-support');
 
 
 //Currently calculates ascendant with any American birthplace.  Still need to add timezone and DST functionality.  Only works for EDT right now.
@@ -14,16 +15,29 @@ const getInfo = function(req, res){
         if (!user) {
             return res.status(404).json({ emailnotfound: "Email not found" });
         }
+        //Currently assumes country is U.S.
         var birthAddress = user.location.city + ", " + user.location.state + ", " + user.location.zip + ", United States";
         opencage.geocode({q: birthAddress, key: config.openCage.key, limit: 1}).then(data => { //Uses opencage to get latitude and longitude for a city.
             if(data.status.code === 200){
                 latitude = data.results[0].geometry.lat;
                 longitude = data.results[0].geometry.lng;
                 tzName = data.results[0].annotations.timezone.name;
-                const date = {year: parseInt(user.DOB.year), month: parseInt(user.DOB.month), day: parseInt(user.DOB.day), hour: parseInt(user.time.hour) + 4};
-                julday = swisseph.swe_julday(date.year, date.month, date.day, date.hour, swisseph.SE_GREG_CAL);  //Calculates the Julian Date in UCT
+                //for some reason I was getting inaccurate answers with minutes added. 
+                var date = {year: parseInt(user.DOB.year), month: parseInt(user.DOB.month), day: parseInt(user.DOB.day), hour: parseInt(user.time.hour)};
+                var timeWas = new Date(date.year, date.month - 1, date.day);  //-1 because for some reason Date calculates months from 0.
+                var tzObject = timeZoneSupport.findTimeZone(tzName);
+                const tzOffset = timeZoneSupport.getUTCOffset(timeWas, tzObject);
+                date.hour = date.hour + tzOffset.offset/60;
+                if(date.hour > 23){ //Cases where day is different between time zones.
+                    date.hour = date.hour % 24;
+                    date.day = date.day + 1;
+                }
+                else if (date.hour < 0){
+                    date.hour = date.hour + 24;
+                    date.day = date.day - 1;
+                }
+                julday = swisseph.swe_julday(date.year, date.month, date.day, date.hour, swisseph.SE_GREG_CAL);  //Calculates the Julian Date
                 swisseph.swe_houses(julday, parseInt(latitude), parseInt(longitude), 'W', function(houses){ //Calculates houses and ascendant with given date, lat, lng, and house system
-                    console.log(houses);
                     //The following lines calculate which house was found.
                     if(0 <= +houses.ascendant & +houses.ascendant < 30){
                         user.overwrite({natalSign: 'Aries'}).save(() => {
