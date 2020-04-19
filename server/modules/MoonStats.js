@@ -4,23 +4,23 @@ let moonIllum = SunCalc.getMoonIllumination(new Date());
 
 //Calculate the name of moon phase value
 let moonPhase;
-if (moonIllum. phase == 0){
+if (moonIllum. phase === 0){
     moonPhase = "New Moon";
 } else if (moonIllum.phase > 0 && moonIllum.phase < 0.25){
     moonPhase = "Waxing Crescent";
-} else if (moonIllum.phase == 0.25){
+} else if (moonIllum.phase === 0.25){
     moonPhase = "First Quarter";
 } else if (moonIllum.phase > 0.25 && moonIllum.phase < 0.5){
     moonPhase = "Waxing Gibbous";
-} else if (moonIllum.phase == 0.5){
+} else if (moonIllum.phase === 0.5){
     moonPhase = "Full Moon";
 } else if (moonIllum.phase > 0.5 && moonIllum.phase < 0.75){
     moonPhase = "Waning Gibbous";
-} else if (moonIllum.phase == 0.75){
+} else if (moonIllum.phase === 0.75){
     moonPhase = "Last Quarter";
 } else if (moonIllum.phase > 0.75 && moonIllum.phase < 1.0){
     moonPhase = "Waning Crescent";
-} else if (moonIllum.phase == 1.0){
+} else if (moonIllum.phase === 1.0){
     moonPhase = "New Moon";
 } else {
     moonPhase = "Invalid Moon Phase";
