@@ -6,14 +6,11 @@ var config = require('../config/config.js');
 
 //Currently calculates ascendant with any American birthplace.  Still need to add timezone and DST functionality.  Only works for EDT right now.
 
-const getInfo = function(req, res){
-    UserSchema.findOne({email: "koki@aol.com"}).then(user => {
+const getInfo = function(req, res, callback){
+    // UserSchema.findOne({email: "koki@aol.com"}).then(user => {
         var latitude = 0;
         var longitude = 0;
         var tzName = "";
-        if (!user) {
-            return res.status(404).json({ emailnotfound: "Email not found" });
-        }
         var birthAddress = user.location.city + ", " + user.location.state + ", " + user.location.zip + ", United States";
         opencage.geocode({q: birthAddress, key: config.openCage.key, limit: 1}).then(data => { //Uses opencage to get latitude and longitude for a city.
             if(data.status.code === 200){
@@ -97,7 +94,7 @@ const getInfo = function(req, res){
             console.log('error', error.message);
         });
         res.send("success");
-    });
-}
+    // });
+};
 
 module.exports = getInfo;

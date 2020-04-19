@@ -1,8 +1,8 @@
 const axios = require("axios"),
-    EmailModel = require('./models/EmailSchema.js'),
+    EmailModel = require('../models/EmailSchema.js'),
     mongoose = require('mongoose');
 
-const apikey = Buffer.from(process.env.MC_AUTH || require('./config/config.js').mc.auth).toString('base64');
+const apikey = Buffer.from(process.env.MC_AUTH || require('../config/config.js').mc.auth).toString('base64');
 
 const sendEmailScript = () => {
     const aSigns = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
