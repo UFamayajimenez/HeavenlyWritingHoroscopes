@@ -57,45 +57,6 @@ router.post("/Signup", (req,res) => {
             // Calculate user rising sign
             risingSign(req, res, (natalSign) => {
                 newUser.natalSign = natalSign;
-                // let tag = 0;
-                // switch (natalSign) {
-                //     case 'Aries':
-                //         tag = 287715;
-                //         break;
-                //     case 'Taurus':
-                //         tag = 287719;
-                //         break;
-                //     case 'Gemini':
-                //         tag = 287723;
-                //         break;
-                //     case 'Cancer':
-                //         tag = 287727;
-                //         break;
-                //     case 'Leo':
-                //         tag = 287731;
-                //         break;
-                //     case 'Virgo':
-                //         tag = 287735;
-                //         break;
-                //     case 'Libra':
-                //         tag = 287739;
-                //         break;
-                //     case 'Scorpio':
-                //         tag = 287743;
-                //         break;
-                //     case 'Sagittarius':
-                //         tag = 287747;
-                //         break;
-                //     case 'Capricorn':
-                //         tag = 287751;
-                //         break;
-                //     case 'Aquarius':
-                //         tag = 287755;
-                //         break;
-                //     case 'Pisces':
-                //         tag = 287759;
-                //         break;
-                // }
 
                 // Add user to Mailchimp audience
                 axios({
@@ -131,7 +92,8 @@ router.post("/Signup", (req,res) => {
                                     .catch(err => console.log(err));
                             });
                         });
-                    }).catch(err => {
+                    })
+                    .catch(err => {
                     console.log('Mailchimp subscribe post failed.');
                     console.log(err.response.data);
                     res.send('Error')
