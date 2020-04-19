@@ -9,6 +9,7 @@ const path = require('path'),
     passport = require("passport"),
     users = require("../routes/api/users"),
     emails = require("../routes/api/emails.js");
+    moonStats = require("../modules/MoonStats.js");
 
 
 module.exports.init = () => {
@@ -24,6 +25,7 @@ module.exports.init = () => {
     }).then(() => {
         console.log(`Successfully connected to mongoose database.`)
     });
+
 
     // initialize app
     const app = express();
