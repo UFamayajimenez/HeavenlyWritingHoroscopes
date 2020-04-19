@@ -9,7 +9,6 @@ const path = require('path'),
     passport = require("passport"),
     users = require("../routes/api/users"),
     emails = require("../routes/api/emails.js");
-    newHoroscopeController = require('../controllers/newHoroscopeController.js');
 
 
 module.exports.init = () => {
@@ -57,7 +56,7 @@ module.exports.init = () => {
     app.use("/api/users", users);
     app.use("/api/emails", emails);
 
-    app.post('/Horoscope', newHoroscopeController);
+
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
         app.use(express.static(path.join(__dirname, '../../client/build')));
