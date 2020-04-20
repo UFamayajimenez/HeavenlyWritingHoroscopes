@@ -38,7 +38,7 @@ if (signNum >= 0 && signNum < 30){
 } else if (signNum >= 210 && signNum < 240){
     moonSignName = "Pisces";
 } else if (signNum >= 240 && signNum < 270){
-    moonSignNameName = "Aries";
+    moonSignName = "Aries";
 } else if (signNum >= 270 && signNum < 300){
     moonSignName = "Taurus";
 } else if (signNum >= 300 && signNum < 330){
@@ -54,6 +54,6 @@ const moonSign = {
     value: signNum
 };
 
-console.log(moonSign.sign);
+console.log(moonSign.sign + ' ' + moonSign.value);
 
 module.exports = moonSign;
