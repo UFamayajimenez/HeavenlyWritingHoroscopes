@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const axios = require("axios");
 const risingSign = require('../../controllers/newHoroscopeController.js');
+const apikey = Buffer.from(process.env.MC_AUTH || require('../../config/config.js').mc.auth).toString('base64');
+const mooncalc = require('../../modules/MoonStats');
 
 
 //Load input validation
@@ -263,8 +265,6 @@ router.patch("/unsubscribe", (req, res) => {
     User.findOne({email: req.body.email}, (err, doc) => {
         if (err) console.log(err);
         else {
-            const apikey = Buffer.from(process.env.MC_AUTH || require('../../config/config.js').mc.auth).toString('base64');
-
             axios({
                 method: 'patch',
                 url: 'https://us19.api.mailchimp.com/3.0/lists/5a18df374b/members/' + doc.hash,
@@ -301,6 +301,40 @@ router.get("/emaillist", (req, res) => {
         res.json(results);
     })
 
+});
+
+router.get("/userReport", (req, res) => {
+    // Need to return natalSign, moonPhase, name.first, horoscope, moonSign
+    // get email from req.body.email
+    let data = {
+        natalSign: '',
+        name: {first: '', last: ''},
+        moonPhase: '',
+        moonSign: '',
+        horoscope: ''
+    };
+
+    User.findOne({email: req.body.email}, (err, user) => {
+        if (err) {
+            console.log(err);
+            res.error(404);
+        }
+        else {
+            data.natalSign = user.natalSign;
+            data.name.first = user.name.first;
+            data.moonPhase = mooncalc.phase;
+            data.moonSign = 'Leo'; //placeholder
+            Email.findOne({audience: {natalSign: data.natalSign, moonPhase: data.moonPhase, moonSign: data.moonSign}}, (error, email) => {
+                if (error) {
+                    console.log(error);
+                    res.error(403);
+                }
+                else {
+                    data.horoscope = email.content;
+                    res.send(data);
+                }
+            });
+    }});
 });
 
 module.exports = router;
