@@ -9,4 +9,4 @@ const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server now running on port ` + port + '!'));
 
-setInterval(sendEmailScript, 180000);
+setInterval(sendEmailScript, process.env.interval || 216000000);
