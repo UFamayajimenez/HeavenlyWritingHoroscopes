@@ -5,7 +5,8 @@ const jwt = require("jsonwebtoken");
 const axios = require("axios");
 const risingSign = require('../../controllers/newHoroscopeController.js');
 const apikey = Buffer.from(process.env.MC_AUTH || require('../../config/config.js').mc.auth).toString('base64');
-const mooncalc = require('../../modules/MoonStats');
+const moonCalc = require('../../modules/MoonStats');
+const moonSign = require('../../modules/moonSign');
 
 
 //Load input validation
@@ -322,16 +323,16 @@ router.get("/userReport", (req, res) => {
         else {
             data.natalSign = user.natalSign;
             data.firstName = user.name.first;
-            data.moonPhase = mooncalc.phase;
-            data.moonSign = 'Leo'; //placeholder
+            data.moonPhase = moonCalc.phase;
+            data.moonSign = moonSign.sign;
             Email.findOne({audience: {natalSign: data.natalSign, moonPhase: data.moonPhase, moonSign: data.moonSign}}, (error, email) => {
                 if (error) {
                     console.log(error);
-                    data.horoscope = 'No horoscope yet.';
-                    res.json(data);
+                    res.error(403);
                 }
                 else {
-                    data.horoscope = email.content;
+                    if (email) data.horoscope = email.content;
+                    else data.horoscope = 'No horoscope yet.';
                     res.json(data);
                 }
             });

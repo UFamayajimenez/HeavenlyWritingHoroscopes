@@ -1,15 +1,16 @@
 const axios = require("axios"),
     EmailModel = require('../models/EmailSchema.js'),
     mongoose = require('mongoose'),
-    mooncalc = require('./MoonStats.js');
+    moonCalc = require('./MoonStats.js'),
+    moonSign = require('./moonSign.js');
 
 const apikey = Buffer.from(process.env.MC_AUTH || require('../config/config.js').mc.auth).toString('base64');
 
 const sendEmailScript = () => {
     const aSigns = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
     // First: Calculate current moon phase + sign
-    const mPhase = mooncalc.phase;
-    const mSign = 'Leo';
+    const mPhase = moonCalc.phase;
+    const mSign = moonSign.sign;
 
     // Second: search database for existing email with that moon phase/sign combo for each ascendant sign
     aSigns.forEach((aSign, i) => {

@@ -44,15 +44,15 @@ const DailyReport= (props) => {
                                 {" " + natalSign}
                             </span>
                          </h3>
-                        <h3>Today's Transit Moon Sign is
-                            <span className="keyWord">
-                                {" " + moonSign}
-                            </span>
-                        </h3>
                         <h3>
                             Today's Moon Phase is
                             <span className="keyWord">
                                 {" " + moonPhase}
+                            </span>
+                        </h3>
+                        <h3>Today's Moon Sign is
+                            <span className="keyWord">
+                                {" " + moonSign}
                             </span>
                         </h3>
                     </div>
