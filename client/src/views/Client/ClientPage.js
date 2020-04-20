@@ -3,9 +3,28 @@ import ClientNavBar from './ClientNavBar';
 import { Redirect, Route, Switch} from 'react-router-dom';
 import DailyReport from './DailyReport';
 import Settings from './Settings';
-import './ClientPage.css'
+import './ClientPage.css';
+import axios from 'axios';
 
 const ClientPage = (props) => {
+    //
+    // const getReport = () => {
+    //     let report = {};
+    //     axios.get("/api/users/userReport", {
+    //         params: {
+    //             email: sessionStorage.email
+    //         }
+    //     })
+    //         .then((res) => {
+    //             report = res.data;
+    //             if (res.error === 403) report.horoscope = 'No horoscope yet.';
+    //             console.log('axios post success');
+    //             return report
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    // };
 
     let client = sessionStorage.getItem("name") || "Greetings";
     //console.log(client);
@@ -39,7 +58,9 @@ const ClientPage = (props) => {
             </div>
 
             <Switch>
-                <Route exact path="/client/todays-report" component={DailyReport}/>
+                <Route exact path="/client/todays-report">
+                       <DailyReport/>
+            </Route>
                 <Route exact path="/client/settings" component={Settings}/>
             </Switch>
             {greeting()}

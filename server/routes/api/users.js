@@ -308,30 +308,31 @@ router.get("/userReport", (req, res) => {
     // get email from req.body.email
     let data = {
         natalSign: '',
-        name: {first: '', last: ''},
+        firstName: '',
         moonPhase: '',
         moonSign: '',
         horoscope: ''
     };
 
-    User.findOne({email: req.body.email}, (err, user) => {
+    User.findOne({email: req.query.email}, (err, user) => {
         if (err) {
             console.log(err);
             res.error(404);
         }
         else {
             data.natalSign = user.natalSign;
-            data.name.first = user.name.first;
+            data.firstName = user.name.first;
             data.moonPhase = mooncalc.phase;
             data.moonSign = 'Leo'; //placeholder
             Email.findOne({audience: {natalSign: data.natalSign, moonPhase: data.moonPhase, moonSign: data.moonSign}}, (error, email) => {
                 if (error) {
                     console.log(error);
-                    res.error(403);
+                    data.horoscope = 'No horoscope yet.';
+                    res.json(data);
                 }
                 else {
                     data.horoscope = email.content;
-                    res.send(data);
+                    res.json(data);
                 }
             });
     }});
