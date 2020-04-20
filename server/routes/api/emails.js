@@ -64,7 +64,7 @@ const createCampaign = (data, callback) => {
                 }
             },
             settings: {
-                subject_line: 'Your Heavenly Horoscope',
+                subject_line: 'Ascendant in ' + data.audience.natalSign + ' Moon in Phase ' + data.audience.moonPhase + ' and in Sign ' + data.audience.moonSign,
                 title: data.audience.natalSign + '|' + data.audience.moonPhase + '|' + data.audience.moonSign,
                 from_name: 'Heavenly Writing',
                 reply_to: 'heavenlywriting2020@gmail.com',
