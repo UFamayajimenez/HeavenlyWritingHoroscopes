@@ -50,6 +50,7 @@ const  Home = (props) => {
                 }
                 else {
                     sessionStorage.setItem("name", res.data.user.name.first);
+                    sessionStorage.setItem("email", res.data.user.email);
                     sessionStorage.setItem("loggedStatus", 1);
                     console.log("Logged Status: " + sessionStorage.getItem("loggedStatus"));
                     window.location.reload();

@@ -7,7 +7,10 @@ const path = require('path'),
     cors = require('cors'),
     newUserController = require('../controllers/newUserController.js'),
     passport = require("passport"),
-    users = require("../routes/api/users");
+    users = require("../routes/api/users"),
+    emails = require("../routes/api/emails.js");
+    moonStats = require("../modules/MoonStats.js");
+    moonSign = require("../modules/MoonSign");
 
 
 module.exports.init = () => {
@@ -23,6 +26,7 @@ module.exports.init = () => {
     }).then(() => {
         console.log(`Successfully connected to mongoose database.`)
     });
+
 
     // initialize app
     const app = express();
@@ -40,11 +44,6 @@ module.exports.init = () => {
 
     app.use(cors());
 
-    // add a router
-    // app.use('/api/example', exampleRouter);
-
-    // app.post('/SignUp', newUserController);
-
     //Passport middleware
     app.use(passport.initialize());
 
@@ -53,6 +52,7 @@ module.exports.init = () => {
 
     // Routes
     app.use("/api/users", users);
+    app.use("/api/emails", emails);
 
 
     if (process.env.NODE_ENV === 'production') {
