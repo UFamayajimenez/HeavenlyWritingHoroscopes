@@ -10,6 +10,7 @@ const path = require('path'),
     users = require("../routes/api/users"),
     emails = require("../routes/api/emails.js");
     moonStats = require("../modules/MoonStats.js");
+    moonSign = require("../modules/MoonSign");
 
 
 module.exports.init = () => {
