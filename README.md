@@ -92,6 +92,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
         auth: 'apikey:aacda47e33f21c6b122555a448bd3a0d-us19',
     }
     </code>
+ 
+### OpenCage API Key
+
+- #### `config.js` - Within the config file, insert the following lines of code: 
+    <code> key: 0b5ee3fe534342d7ab886f342f1a0778,
+    </code>
 
 ## Environment Variables
 When working directly with the Heroky deployment, the following Config Vars are added for proper functionality:
