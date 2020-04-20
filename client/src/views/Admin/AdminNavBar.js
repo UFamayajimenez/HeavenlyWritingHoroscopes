@@ -25,9 +25,9 @@ const AdminNavBar = () => {
                 <Nav className="mr-auto">
                     <Nav.Link href="/admin/users">Users</Nav.Link>
                     <Nav.Link href="/admin/database">Database</Nav.Link>
-                    <Nav.Link href="/admin/overview">Overview</Nav.Link>
+                    {/* <Nav.Link href="/admin/overview">Overview</Nav.Link>
                     <Nav.Link href="/admin/statistics">Statistics</Nav.Link>
-                    <Nav.Link href="/admin/settings">Settings</Nav.Link>
+                    <Nav.Link href="/admin/settings">Settings</Nav.Link> */}
                     <Nav.Link href="/admin/create">Create Email</Nav.Link>
                     <Nav.Link href="/admin/signout" onClick={logOut} style={{color: "red"}}>Log Out</Nav.Link>
                 </Nav>

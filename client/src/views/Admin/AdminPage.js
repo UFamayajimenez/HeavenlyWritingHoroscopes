@@ -16,15 +16,22 @@ const AdminPage = (props) => {
     let admin = sessionStorage.getItem("name") || "Greetings";
     console.log(admin);
 
-
-
-
-
-
     if (sessionStorage.getItem("loggedStatus") != 2){
         return <Redirect to='/Home' />
     }
 
+    const greeting = () => {
+        console.log(props.location.pathname);
+        if(props.location.pathname == "/admin") {
+            return(
+                <div className="adminBackground">
+                    <div className="greetingtext">
+                        <h1>Hello, {admin} </h1>
+                    </div>
+                </div>
+            );
+        }
+    }
 
     return (
         <div className="adminPage">
@@ -47,11 +54,7 @@ const AdminPage = (props) => {
                 <Route exact path="/admin/create" component={CreateEmail}/>
             </Switch>
 
-            <div className="adminBackground">
-                <div className="greetingtext">
-                    <h1>Hello, {admin} </h1>
-                </div>
-            </div>
+            {greeting()}
         </div>
     );
 }

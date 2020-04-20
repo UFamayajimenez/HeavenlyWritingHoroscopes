@@ -63,16 +63,16 @@ const SignUp = () => {
             <div className="signUpContainer">
                 <h1>Heavenly Writing Subscription Form</h1>
                 <p>To receive personalized horoscopes from Heavenly Writing please fill in the information below.</p>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="row1">
                         <div className="form-row">
                         <div className="col">
-                            <input type="text" className="form-control" placeholder="First name" required
+                            <input type="text" className="form-control" name="firstName" placeholder="First name" required
                            onChange={e => data.name.first = e.target.value + ' '}
                         />
                         </div>
                     <div className="col">
-                        <input type="text" className="form-control" placeholder="Last name" required
+                        <input type="text" className="form-control" name="lastName" placeholder="Last name" required
                            onChange={e => data.name.last = e.target.value}
                     />
                     </div>
@@ -82,7 +82,7 @@ const SignUp = () => {
                     <div className="form-row">
                     <div className="col">
                         <label htmlFor="dateOfBirth-input">Date of Birth</label>
-                        <input className="form-control" type="date" id="dateOfBirth-input" required
+                        <input className="form-control" type="date" name="DOB" id="dateOfBirth-input" required
                            onChange={e => {
                                if (e.target.value) {
                                    const date = e.target.value.split('-');
@@ -95,7 +95,7 @@ const SignUp = () => {
                     </div>
                     <div className="col">
                         <label htmlFor="timeOfBirth-label">Time of Birth</label>
-                        <input className="form-control" type="time" id="timeOfBirth-input"
+                        <input className="form-control" type="time" name="time" id="timeOfBirth-input"
                            onChange={e => {
                                if (e.target.value) {
                                    const time = e.target.value.split(':');
@@ -104,12 +104,14 @@ const SignUp = () => {
                                }
                            }}
                         />
-                        <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" onChange={e => {
+                        <input className="form-check-input" type="checkbox" value="" id="defaultCheck1"
+                               onChange={e => {
                             if(e.target.checked){
                                 data.time.hour = '12';
                                 data.time.minute = '0';
                             }
-                        }}/>
+                        }}
+                        />
                         <label className="form-check-label" htmlFor="exampleRadios1">
                                 I don't know my time of birth
                             </label>
@@ -119,34 +121,31 @@ const SignUp = () => {
                     <div className="row3">
                     <div className="form-row">
                     <div className="col">
-                        <input type="text" className="form-control" id="validationCustom03" placeholder="City" required
+                        <input type="text" className="form-control" name="city" id="validationCustom03" placeholder="City" required
                                onChange={e => {
                                    data.location.city = e.target.value;
-                               }
-
-                        }/>
+                               }}
+                        />
                             <div className="invalid-feedback">
                                 Please provide a valid city.
                             </div>
                     </div>
                         <div className="col">
-                            <input type="text" className="form-control" id="validationCustom04" placeholder="State" required
+                            <input type="text" className="form-control" name="state" id="validationCustom04" placeholder="State" required
                                    onChange={e => {
                                        data.location.state = e.target.value;
-                                   }
-
-                                   }/>
+                                   }}
+                            />
                                 <div className="invalid-feedback">
                                     Please provide a valid state.
                                 </div>
                         </div>
                         <div className="col">
-                            <input type="text" className="form-control" id="validationCustom05" placeholder="Zip" required
+                            <input type="text" className="form-control" name="zip" id="validationCustom05" placeholder="Zip" required
                                    onChange={e => {
                                 data.location.zip = e.target.value;
-                            }
-
-                            }/>
+                            }}
+                            />
                                 <div className="invalid-feedback">
                                     Please provide a valid zip.
                                 </div>
@@ -157,14 +156,14 @@ const SignUp = () => {
             <div className="form-row">
                 <div className="col">
 
-                    <input type="text" className="form-control" type = "email" placeholder="Email Address" required
+                    <input type="text" className="form-control" name="email" placeholder="Email Address" required
 
                            onChange={e => data.email = e.target.value}
                     />
                 </div>
                 <div className="col">
 
-                    <input type="text" className="form-control" type = "tel" placeholder="Phone Number" required
+                    <input type="text" className="form-control" name="number" placeholder="Phone Number" required
 
                            onChange={e => data.number = e.target.value}
                     />
@@ -174,10 +173,10 @@ const SignUp = () => {
                 <div className="row5">
             <div className="form-row">
                 <div className="col">
-                    <input type="password" className="form-control" placeholder="Password" required
+                    <input type="password" className="form-control" name="password" placeholder="Password" required
                            onChange={e => data.password = e.target.value}
                     />
-      
+
                 </div>
                 <div className="col">
                     <input type="password" className="form-control" placeholder="Confirm Password" required

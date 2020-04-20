@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 const express = require('express'),
     EmailModel = require('../../models/EmailSchema.js'),
     axios = require('axios');
+=======
+const express = require('express')
+
+const EmailModel = require('../../models/EmailSchema.js');
+>>>>>>> emailDatabase
 
 const router = express.Router();
+const axios = require("axios");
 
 
 const createCampaign = (data, callback) => {
