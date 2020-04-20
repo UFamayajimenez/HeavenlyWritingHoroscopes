@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 const express = require('express'),
     EmailModel = require('../../models/EmailSchema.js'),
     axios = require('axios');
-=======
-const express = require('express')
-
-const EmailModel = require('../../models/EmailSchema.js');
->>>>>>> emailDatabase
 
 const router = express.Router();
-const axios = require("axios");
-
 
 const createCampaign = (data, callback) => {
     const apikey = Buffer.from(process.env.MC_AUTH || require('../../config/config.js').mc.auth).toString('base64');

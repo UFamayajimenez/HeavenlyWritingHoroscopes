@@ -162,7 +162,6 @@ router.post("/login", (req, res) => {
     });
 });
 
-<<<<<<< HEAD
 
 router.post("/getDataForEmail", (req,res) => {
 
@@ -263,7 +262,7 @@ router.put("/changePassword", (req,res) => {
 router.patch("/unsubscribe", (req, res) => {
     User.findOne({email: req.body.email}, (err, doc) => {
         if (err) console.log(err);
-        else{
+        else {
             const apikey = Buffer.from(process.env.MC_AUTH || require('../../config/config.js').mc.auth).toString('base64');
 
             axios({
@@ -282,26 +281,26 @@ router.patch("/unsubscribe", (req, res) => {
                     res.send('Unsubscribe successful');
                 })
                 .catch(err => console.log(err.response.data))
-            }
+        }
     })
-=======
+});
+
 router.get("/userlist", (req, res) => {
-    
+
     User.find({}).exec((err, results)=> {
         if(err) throw err;
         res.json(results);
     })
-        
+
 });
 
 router.get("/emaillist", (req, res) => {
-    
+
     Email.find({}).exec((err, results)=> {
         if(err) throw err;
         res.json(results);
     })
-        
->>>>>>> emailDatabase
+
 });
 
 module.exports = router;
