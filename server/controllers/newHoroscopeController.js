@@ -1,6 +1,5 @@
 var swisseph = require('swisseph');
 var opencage = require('opencage-api-client');
-var config = require('../config/config.js');
 var timeZoneSupport = require('timezone-support');
 
 
