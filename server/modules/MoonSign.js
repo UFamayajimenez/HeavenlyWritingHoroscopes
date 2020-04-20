@@ -54,4 +54,6 @@ const moonSign = {
     value: signNum
 };
 
+console.log(moonSign.sign);
+
 module.exports = moonSign;
