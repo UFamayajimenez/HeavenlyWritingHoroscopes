@@ -79,14 +79,14 @@ const  CreateEmail = () => {
                             <select className="form-control" id="transitioningMoonPhaseSelect"
                                     onChange={e => data.audience.moonPhase = e.target.value}
                             >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
+                                <option value="New Moon">New Moon</option>
+                                <option value="Waxing Crescent">Waxing Crescent</option>
+                                <option value="First Quarter">First Quarter</option>
+                                <option value="Waxing Gibbous">Waxing Gibbous</option>
+                                <option value="Full Moon">Full Moon</option>
+                                <option value="Waning Gibbous">Waning Gibbous</option>
+                                <option value="Last Quarter">Last Quarter</option>
+                                <option value="Waning Crescent">Waning Crescent</option>
                             </select>
                         </div>
                         <div className="form-group">

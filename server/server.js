@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server now running on port ` + port + '!'));
 
-// setInterval(sendEmailScript, 180000);
+setInterval(sendEmailScript, 180000);
 
 
 // const express = require("express");

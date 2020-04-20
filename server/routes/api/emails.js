@@ -8,7 +8,7 @@ const router = express.Router();
 const createCampaign = (data, callback) => {
     const apikey = Buffer.from(process.env.MC_AUTH || require('../../config/config.js').mc.auth).toString('base64');
     let tag = 0;
-    let phase = '';
+    // let phase = '';
     let campaignID = '';
     switch(data.audience.natalSign){
         case 'Aries':
@@ -48,32 +48,32 @@ const createCampaign = (data, callback) => {
             tag = 287759;
             break;
     }
-    switch(data.audience.moonPhase){
-        case '1':
-            phase = 'New';
-            break;
-        case '2':
-            phase = 'Waxing Crescent';
-            break;
-        case '3':
-            phase = 'First Quarter';
-            break;
-        case '4':
-            phase = 'Waxing Gibbous';
-            break;
-        case '5':
-            phase = 'Full';
-            break;
-        case '6':
-            phase = 'Waning Gibbous';
-            break;
-        case '7':
-            phase = 'Third Quarter';
-            break;
-        case '8':
-            phase = 'Waning Crescent';
-            break;
-    }
+    // switch(data.audience.moonPhase){
+    //     case '1':
+    //         phase = 'New';
+    //         break;
+    //     case '2':
+    //         phase = 'Waxing Crescent';
+    //         break;
+    //     case '3':
+    //         phase = 'First Quarter';
+    //         break;
+    //     case '4':
+    //         phase = 'Waxing Gibbous';
+    //         break;
+    //     case '5':
+    //         phase = 'Full';
+    //         break;
+    //     case '6':
+    //         phase = 'Waning Gibbous';
+    //         break;
+    //     case '7':
+    //         phase = 'Third Quarter';
+    //         break;
+    //     case '8':
+    //         phase = 'Waning Crescent';
+    //         break;
+    // }
 
     // first axios post to create new campaign
     axios({
@@ -93,7 +93,7 @@ const createCampaign = (data, callback) => {
             },
             settings: {
                 subject_line: 'Your Heavenly Horoscope',
-                title: data.audience.natalSign + '|' + phase + ' Moon|' + data.audience.moonSign,
+                title: data.audience.natalSign + '|' + data.audience.moonPhase + '|' + data.audience.moonSign,
                 from_name: 'Heavenly Writing',
                 reply_to: 'heavenlywriting2020@gmail.com',
                 to_name: '*|FNAME|*'
