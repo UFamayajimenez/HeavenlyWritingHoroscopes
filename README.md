@@ -67,43 +67,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 #### `.gitignore` - Tells git which files to ignore
 #### `README` - This file!
 
-## Config File
-
-<code>
-    const config = {
-        db: {
-            uri: 'mongodb+srv://heavenlywriting:DakotaFanClub@cluster0-u13yq.mongodb.net/test?retryWrites=true&w=majority',             //place the URI of your mongo database here.
-        },
-        port: 5000,
-        secretOrKey: "secret",
-        mc: {
-            auth: 'apikey:aacda47e33f21c6b122555a448bd3a0d-us19',
-        }
-    };
-    module.exports = config;
-</code>
-
-## List of API with Keys
-
-### Mailchimp API Key
-
-- #### `config.js` - Within the config file, insert the following lines of code:
-    <code> mc: {
-        auth: 'apikey:aacda47e33f21c6b122555a448bd3a0d-us19',
-    }
-    </code>
- 
-### OpenCage API Key
-
-- #### `config.js` - Within the config file, insert the following lines of code: 
-    <code> key: 0b5ee3fe534342d7ab886f342f1a0778,
-    </code>
-
-## Environment Variables
-When working directly with the Heroky deployment, the following Config Vars are added for proper functionality:
-- #### `DB_URI` - mongodb+srv://heavenlywriting:DakotaFanClub@cluster0-u13yq.mongodb.net/test?retryWrites=true&w=majority
-- #### `MC_AUTH` - apikey:aacda47e33f21c6b122555a448bd3a0d-us19
-- #### `secret` - secret
 
 ## Log-In Credentials
 
